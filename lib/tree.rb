@@ -1,7 +1,7 @@
 load 'tree/node.rb'
 class Tree
   def initialize
-    @root=TreeNode.new
+    @root=Node.new#('')
   end
   def add (str)
     @current=@root
@@ -9,8 +9,8 @@ class Tree
     @arr.each do |ch|
       @next=@current.children[ch]
       if @next.nil?
-        @next=TreeNode.new
-        @current.children[ch]=@next  #
+        @next=Node.new
+        @current.children[ch]=@next
       end
       @current=@next
     end
