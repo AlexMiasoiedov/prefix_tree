@@ -16,6 +16,23 @@ class Tree
     end
     @current.is_word=true
   end
+  def include (str)
+    @current=@root
+    @arr=str.split('')
+    @arr.each do |ch|
+      @child=@current[ch]
+      if @child.nil?
+        puts false
+        break
+      end
+      @current=@current.children[ch]
+    end
+    if @current.is_word
+      puts true
+    end
+  end
 end
 test=Tree.new
 test.add('test')
+test.include('test')
+test.include('test2')
