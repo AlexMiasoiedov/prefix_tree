@@ -16,11 +16,11 @@ class Tree
     end
     @current.is_word=true
   end
-  def include (str)
+  def include? (str)
     @current=@root
     @arr=str.split('')
     @arr.each do |ch|
-      @child=@current[ch]
+      @child=@current.children[ch]
       if @child.nil?
         puts false
         break
@@ -32,7 +32,3 @@ class Tree
     end
   end
 end
-test=Tree.new
-test.add('test')
-test.include('test') #not working!
-test.include('test2')
