@@ -34,5 +34,5 @@ class Tree
 end
 test=Tree.new
 test.add('test')
-test.include('test')
+test.include('test') #not working!
 test.include('test2')
