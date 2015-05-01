@@ -33,6 +33,12 @@ class Tree
     end
   end
 
+  def list (str='')
+    current = get_prefix (str)
+    some_method (current.children)
+  end
+
+  private
   def get_prefix (str)
     current = @root
     str.split('').each do |ch|
@@ -41,17 +47,13 @@ class Tree
     return current
   end
 
+  private
   def some_method (object_hash)
-    p "object hash #{object_hash}"
+    #puts "\nobject hash #{object_hash}"
     object_hash.each do |key, value|
       current = object_hash[key]
       p key
       some_method (current.children)
     end
-  end
-
-  def list (str='')
-    current = get_prefix (str)
-    some_method (current.children)
   end
 end
