@@ -34,26 +34,34 @@ class Tree
   end
 
   def list (str='')
-    current = get_prefix (str)
-    some_method (current.children)
+    @arr_word = []
+    word = ''
+    current = get_prefix(str, word)
+    some_method(current.children, word)
+    @arr_word.each { |w| puts w }
   end
 
   private
-  def get_prefix (str)
-    current = @root
-    str.split('').each do |ch|
-      current = current.children[ch]
-    end
-    return current
-  end
-
-  private
-  def some_method (object_hash)
-    #puts "\nobject hash #{object_hash}"
+  def some_method (object_hash, word)
     object_hash.each do |key, value|
       current = object_hash[key]
       p key
-      some_method (current.children)
+      word << key
+      @arr_word << word if current.is_word && word.length >= WORD_MIN_LENGTH
+      some_method(current.children, word)
     end
+  end
+
+  private
+  def get_prefix (str, word)
+    current = @root
+    str.split('').each do |ch|
+      next_node = current.children[ch]
+      puts "next node: #{next_node.inspect}"
+      next if next_node.nil?
+      current = current.children[ch]
+      word << ch
+    end
+    return current
   end
 end
