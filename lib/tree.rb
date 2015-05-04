@@ -34,11 +34,11 @@ class Tree
   end
   
   def write_file (str)
-    File.open('tree.txt', 'a') { |file| file.write(str) }
+    File.open('files/read', 'a') { |file| file.write(str) }
   end
 
   def read_file
-    File.open('tree.txt', 'r') do |f|
+    File.open('files/read', 'r') do |f|
       f.each_line do |line|
         puts line
       end
