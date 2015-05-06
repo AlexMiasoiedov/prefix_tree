@@ -18,5 +18,5 @@ puts "\nreading file"
 test.read_file
 puts "\nlist test"
 test.list
-#test.write_file
+test.write_file
 

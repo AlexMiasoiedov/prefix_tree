@@ -30,33 +30,35 @@ class Tree
   end
   
   def write_file
-    File.open('files/read', 'a') do |file|
+    File.open('files/read', 'a+') do |file|
       w = list
-      puts 'write_file statement:'
-      puts w
-      w.each { |word|file.write(word) }
+      w.each { |word| file.write(word << "\n") }
     end
   end
 
   def read_file
     File.open('files/read', 'r') do |f|
-      f.each_line do |line|
-        add(line.chomp)
-      end
+      f.each_line { |line| add(line.chomp) }
     end
   end
 
   def list (str = '')
-    words_arr = []
+    words_arr = Array.new
+    words = construct_word(str, words_arr)
+    puts words
+    words
+  end
+
+  private
+  def construct_word (str, words_arr)
     cur_node = iterate_nodes(str)
     cur_node.children.each do |key, value|
       prefix = ''
       prefix << str
       prefix << key
-      words_arr.push(prefix) if value.is_word #&& prefix.length >= WORD_MIN_LENGTH
-      list(prefix)
+      words_arr.push(prefix) if value.is_word && prefix.length >= WORD_MIN_LENGTH
+      construct_word(prefix, words_arr)
     end
-    print words_arr.inspect
     words_arr
   end
 
