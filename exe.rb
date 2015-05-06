@@ -14,17 +14,9 @@ puts "\nIs the 'temp' include?"
 p test.include?('temp')
 puts "\nIs the 'fake' include?"
 p test.include?('fake')
-puts "\nReturn all with prefix 'tes'"
-test.list('tes')
-puts "\nReturn all with prefix 'te'"
-test.list('te')
-puts "\n\nReturn all with prefix 't'"
-test.list('t')
-puts "\nReturn all with NO prefix"
-test.list
-puts "\nReturn all with nonexisting prefix 'r'"
-test.list('r')
-test.write_file('te')
-test.write_file(test.list('te'))
-puts "\nread file tree: "
+puts "\nreading file"
 test.read_file
+puts "\nlist test"
+test.list
+#test.write_file
+

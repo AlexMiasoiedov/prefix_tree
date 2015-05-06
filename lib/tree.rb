@@ -26,53 +26,47 @@ class Tree
       return false if child.nil?
       current = current.children[ch]
     end
-    if current.is_word
-      return true
-    else
-      return false
-    end
+    return current.is_word
   end
   
-  def write_file (str)
-    File.open('files/read', 'a') { |file| file.write(str) }
+  def write_file
+    File.open('files/read', 'a') do |file|
+      w = list
+      puts 'write_file statement:'
+      puts w
+      w.each { |word|file.write(word) }
+    end
   end
 
   def read_file
     File.open('files/read', 'r') do |f|
       f.each_line do |line|
-        puts line
+        add(line.chomp)
       end
     end
   end
 
-  def list (str='')
-    @arr_word = []
-    word = ''
-    current = get_prefix(str, word)
-    some_method(current.children, word)
-    @arr_word.each { |w| puts w }
-  end
-
-  private
-  def some_method (object_hash, word)
-    object_hash.each do |key, value|
-      current = object_hash[key]
-      p key
-      word << key
-      @arr_word << word if current.is_word && word.length >= WORD_MIN_LENGTH
-      some_method(current.children, word)
+  def list (str = '')
+    words_arr = []
+    cur_node = iterate_nodes(str)
+    cur_node.children.each do |key, value|
+      prefix = ''
+      prefix << str
+      prefix << key
+      words_arr.push(prefix) if value.is_word #&& prefix.length >= WORD_MIN_LENGTH
+      list(prefix)
     end
+    print words_arr.inspect
+    words_arr
   end
 
   private
-  def get_prefix (str, word)
+  def iterate_nodes (w)
     current = @root
-    str.split('').each do |ch|
+    w.split('').each do |ch|
       next_node = current.children[ch]
-      puts "next node: #{next_node.inspect}"
-      next if next_node.nil?
+      break if next_node.nil?
       current = current.children[ch]
-      word << ch
     end
     return current
   end
