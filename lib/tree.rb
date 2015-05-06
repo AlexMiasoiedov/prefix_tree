@@ -1,4 +1,5 @@
 require_relative 'tree/node'
+
 class Tree
   WORD_MIN_LENGTH = 5
 
