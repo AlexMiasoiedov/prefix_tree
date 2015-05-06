@@ -7,7 +7,6 @@ puts 'Add word "worked"'
 test.add('test')
 test.add('tesla')
 test.add('temp')
-test.add('worked')
 puts "\nIs the 'test' include?"
 p test.include?('test')
 puts "\nIs the 'tesla' include?"
@@ -18,7 +17,7 @@ puts "\nIs the 'fake' include?"
 p test.include?('fake')
 puts "\nreading file"
 test.read_file
-puts "\nlist test"
-test.list
+puts "\nlist test:"
+puts test.list
 test.write_file
 

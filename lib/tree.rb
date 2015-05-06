@@ -5,6 +5,7 @@ class Tree
 
   def initialize
     @root = Node.new
+    @words_holder = Array.new
   end
 
   def add (str)
@@ -28,10 +29,11 @@ class Tree
     end
     return current.is_word
   end
-  
+
   def write_file
     File.open('files/write', 'w') do |file|
       w = list
+      puts "\ninspecting write #{w}"
       w.each { |word| file.write(word << "\n") }
     end
   end
@@ -42,17 +44,17 @@ class Tree
     end
   end
 
-  def list (str = '', words_arr = Array.new)
+  def list (str = '')
+    words_arr = @words_holder
     cur_node = iterate_nodes(str)
     cur_node.children.each do |key, value|
       prefix = ''
       prefix << str
-      prefix << key
+      prefix << key.to_s
       words_arr.push(prefix) if value.is_word && prefix.length >= WORD_MIN_LENGTH
-      list(prefix, words_arr)
+      list(prefix)
     end
-    puts words_arr.inspect
-    words_arr
+    words_arr.uniq
   end
 
   private
