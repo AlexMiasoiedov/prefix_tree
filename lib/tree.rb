@@ -23,15 +23,14 @@ class Tree
   def include? (str)
     current = @root
     str.split('').each do |ch|
-      child = current.children[ch]
-      return false if child.nil?
+      return false if current.children[ch].nil?
       current = current.children[ch]
     end
     return current.is_word
   end
   
   def write_file
-    File.open('files/write', 'a+') do |file|
+    File.open('files/write', 'w') do |file|
       w = list
       w.each { |word| file.write(word << "\n") }
     end
@@ -43,23 +42,16 @@ class Tree
     end
   end
 
-  def list (str = '')
-    words_arr = Array.new
-    words = construct_word(str, words_arr)
-    puts words
-    words
-  end
-
-  private
-  def construct_word (str, words_arr)
+  def list (str = '', words_arr = Array.new)
     cur_node = iterate_nodes(str)
     cur_node.children.each do |key, value|
       prefix = ''
       prefix << str
       prefix << key
       words_arr.push(prefix) if value.is_word && prefix.length >= WORD_MIN_LENGTH
-      construct_word(prefix, words_arr)
+      list(prefix, words_arr)
     end
+    puts words_arr.inspect
     words_arr
   end
 
@@ -67,8 +59,7 @@ class Tree
   def iterate_nodes (w)
     current = @root
     w.split('').each do |ch|
-      next_node = current.children[ch]
-      break if next_node.nil?
+      break if current.children[ch].nil?
       current = current.children[ch]
     end
     return current
