@@ -30,7 +30,7 @@ class Tree
   end
   
   def write_file
-    File.open('files/read', 'a+') do |file|
+    File.open('files/write', 'a+') do |file|
       w = list
       w.each { |word| file.write(word << "\n") }
     end

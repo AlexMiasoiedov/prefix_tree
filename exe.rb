@@ -3,9 +3,11 @@ test=Tree.new
 puts 'Add word "test"'
 puts 'Add word "tesla"'
 puts 'Add word "temp"'
+puts 'Add word "worked"'
 test.add('test')
 test.add('tesla')
 test.add('temp')
+test.add('worked')
 puts "\nIs the 'test' include?"
 p test.include?('test')
 puts "\nIs the 'tesla' include?"
