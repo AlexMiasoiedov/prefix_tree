@@ -1,9 +1,10 @@
 require_relative 'lib/tree'
+
 test=Tree.new
+
 puts 'Add word "test"'
 puts 'Add word "tesla"'
 puts 'Add word "temp"'
-puts 'Add word "worked"'
 test.add('test')
 test.add('tesla')
 test.add('temp')
@@ -18,6 +19,7 @@ p test.include?('fake')
 puts "\nreading file"
 test.read_file
 puts "\nlist test:"
-puts test.list
+p test.list
 test.write_file
+
 
