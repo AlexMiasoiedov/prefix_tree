@@ -1,4 +1,5 @@
 require_relative 'tree/node'
+require 'zip'
 
 class Tree
   WORD_MIN_LENGTH = 5
@@ -61,5 +62,15 @@ class Tree
       find_words(pref << key, words_holder)
     end
     words_holder
+  end
+
+  def write_zip
+    folder = "files"
+    zipfile_name = "files/write.zip"
+    input_file = "write"
+    #if the zip file is already existing, then return false
+    Zip::File.open(zipfile_name, Zip::File::CREATE) do |zipfile|
+      zipfile.add(input_file, folder + '/' + input_file)
+    end
   end
 end

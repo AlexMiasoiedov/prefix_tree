@@ -21,5 +21,5 @@ test.read_file
 puts "\nlist test:"
 p test.list
 test.write_file
-
-
+p "\ntest write zipfile"
+test.write_zip
