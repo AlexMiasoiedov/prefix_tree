@@ -64,13 +64,19 @@ class Tree
     words_holder
   end
 
-  def write_zip
-    folder = "files"
-    zipfile_name = "files/write.zip"
-    input_file = "write"
-    #if the zip file is already existing, then return false
-    Zip::File.open(zipfile_name, Zip::File::CREATE) do |zipfile|
-      zipfile.add(input_file, folder + '/' + input_file)
+  def create_zip
+      Zip::File.open('files/write.zip', Zip::File::CREATE) do |zipfile|
+        zipfile.add('write', 'files' + '/' + 'write')
+      end
+  end
+
+  def read_zip
+    Zip::File.open('files/write.zip') do |zipfile|
+      zipfile.each do |entry|
+        puts "\nExtracting #{entry.name}"
+        #entry.extract('files/zip')
+        #content = entry.get_input_stream.read
+      end
     end
   end
 end
