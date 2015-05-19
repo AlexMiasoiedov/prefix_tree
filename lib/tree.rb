@@ -64,19 +64,26 @@ class Tree
     words_holder
   end
 
+=begin
+#this block will create new zip file
   def create_zip
       Zip::File.open('files/write.zip', Zip::File::CREATE) do |zipfile|
-        zipfile.add('write', 'files' + '/' + 'write')
+        #zipfile.rename('write', 'to_change')
+        zipfile.add('write', 'files/write')
       end
+  end
+=end
+
+  def write_zip
+    Zip::File.open('files/write.zip') do |zf|
+      zf.remove('write')
+      zf.add('write', 'files/write')
+    end
   end
 
   def read_zip
-    Zip::File.open('files/write.zip') do |zipfile|
-      zipfile.each do |entry|
-        puts "\nExtracting #{entry.name}"
-        #entry.extract('files/zip')
-        #content = entry.get_input_stream.read
-      end
+    Zip::File.open('files/read.zip') do |zipfile|
+      zipfile.each { |zp| puts "Zip file contains #{zp.name}" }  
     end
   end
 end
