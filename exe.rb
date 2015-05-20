@@ -20,7 +20,6 @@ puts "\nreading file"
 test.read_file
 puts "\nlist test:"
 p test.list
-#test.create_zip
 puts "\nwriting zipfile"
 test.write_zip
 puts "\nreading zipfile"
