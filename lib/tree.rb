@@ -33,7 +33,6 @@ class Tree
   def write_file
     File.open('files/write', 'w') do |file|
       w = list
-      puts "\ninspecting write #{w.inspect}"
       w.each { |word| file.write(word << "\n") }
     end
   end
@@ -64,18 +63,10 @@ class Tree
     words_holder
   end
 
-  private
-  def create_zip
-      Zip::File.open('files/write.zip', Zip::File::CREATE) do |zipfile|
-        zipfile.add('write', 'files/write')
-      end
-  end
-
-  public
   def write_zip
-    create_zip unless File.exist?('files/write.zip')
-    Zip::File.open('files/write.zip') do |zf|
-      zf.remove('write')
+    File.delete('files/write.zip') if File.exist?('files/write.zip')
+    Zip::File.open('files/write.zip', Zip::File::CREATE) do |zf|
+      self.write_file
       zf.add('write', 'files/write')
     end
   end
