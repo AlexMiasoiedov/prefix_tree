@@ -32,20 +32,20 @@ class Tree
 
   def write_file
     File.open('files/write', 'w') do |file|
-      w = list
+      w = self.list
       w.each { |word| file.write(word << "\n") }
     end
   end
 
   def read_file
     File.open('files/read', 'r') do |f|
-      f.each_line { |line| add(line.chomp) }
+      f.each_line { |line| self.add(line.chomp) }
     end
   end
 
   def list (str = '')
     words_holder = Array.new
-    find_words(str, words_holder)
+    self.find_words(str, words_holder)
   end
 
   def find_words (prefix, words_holder)
@@ -58,7 +58,7 @@ class Tree
     current_node.children.each do |key, val|
       pref = ''
       pref << prefix
-      find_words(pref << key, words_holder)
+      self.find_words(pref << key, words_holder)
     end
     words_holder
   end
@@ -74,7 +74,7 @@ class Tree
   def read_zip
     Zip::File.open('files/read.zip') do |zf|
       puts "\nadd zip file into tree"
-      zf.read('read').split("\n").each { |line| add(line) }
+      zf.read('read').split("\n").each { |line| self.add(line) }
     end
   end
 end
