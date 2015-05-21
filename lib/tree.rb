@@ -1,4 +1,5 @@
 require_relative 'tree/node'
+
 require 'zip'
 
 class Tree
@@ -8,7 +9,7 @@ class Tree
     @root = Node.new
   end
 
-  def add (str)
+  def add(str)
     current = @root
     str.split('').each do |ch|
       next_node = current.children[ch]
@@ -21,7 +22,7 @@ class Tree
     current.is_word = true
   end
 
-  def include? (str)
+  def include?(str)
     current = @root
     str.split('').each do |ch|
       return false if current.children[ch].nil?
@@ -32,23 +33,23 @@ class Tree
 
   def write_file
     File.open('files/write', 'w') do |file|
-      w = self.list
+      w = list
       w.each { |word| file.write(word << "\n") }
     end
   end
 
   def read_file
     File.open('files/read', 'r') do |f|
-      f.each_line { |line| self.add(line.chomp) }
+      f.each_line { |line| add(line.chomp) }
     end
   end
 
-  def list (str = '')
+  def list(str = '')
     words_holder = Array.new
     self.find_words(str, words_holder)
   end
 
-  def find_words (prefix, words_holder)
+  def find_words(prefix, words_holder)
     current_node = @root
     prefix.split('').each do |node|
       break current_node if current_node.children[node].nil?
@@ -58,23 +59,25 @@ class Tree
     current_node.children.each do |key, val|
       pref = ''
       pref << prefix
-      self.find_words(pref << key, words_holder)
+      find_words(pref << key, words_holder)
     end
     words_holder
   end
 
   def write_zip
-    File.delete('files/write.zip') if File.exist?('files/write.zip')
-    Zip::File.open('files/write.zip', Zip::File::CREATE) do |zf|
-      self.write_file
-      zf.add('write', 'files/write')
+    Zip::File.open('files/write.zip') do |zf|
+      contents = zf.read('write')
+      zf.get_output_stream('write') do |f|
+        words = list
+        words.each { |word| f.puts contents + word + "\n" }
+      end
     end
   end
 
   def read_zip
     Zip::File.open('files/read.zip') do |zf|
       puts "\nadd zip file into tree"
-      zf.read('read').split("\n").each { |line| self.add(line) }
+      zf.read('read').split("\n").each { |line| add(line) }
     end
   end
 end

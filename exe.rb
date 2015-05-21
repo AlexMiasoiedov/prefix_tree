@@ -8,6 +8,7 @@ puts 'Add word "temp"'
 test.add('test')
 test.add('tesla')
 test.add('temp')
+test.add('writing_zip')
 puts "\nIs the 'test' include?"
 p test.include?('test')
 puts "\nIs the 'tesla' include?"
