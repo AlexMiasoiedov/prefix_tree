@@ -2,6 +2,8 @@ require_relative 'tree/node'
 
 require 'zip'
 
+require "debugger"
+
 class Tree
   WORD_MIN_LENGTH = 5
 
@@ -10,6 +12,7 @@ class Tree
   end
 
   def add(str)
+    str.chomp!
     current = @root
     str.split('').each do |ch|
       next_node = current.children[ch]
@@ -40,7 +43,7 @@ class Tree
 
   def read_file
     File.open('files/read', 'r') do |f|
-      f.each_line { |line| add(line.chomp) }
+      f.each_line { |line| add(line) }
     end
   end
 
@@ -66,18 +69,16 @@ class Tree
 
   def write_zip
     Zip::File.open('files/write.zip') do |zf|
-      contents = zf.read('write')
       zf.get_output_stream('write') do |f|
         words = list
-        words.each { |word| f.puts contents + word + "\n" }
+        words.each { |word| f.puts word + "\n" }
       end
     end
   end
 
   def read_zip
     Zip::File.open('files/read.zip') do |zf|
-      puts "\nadd zip file into tree"
-      zf.read('read').split("\n").each { |line| add(line) }
+      zf.read('read').each_line { |line| add(line) }
     end
   end
 end
