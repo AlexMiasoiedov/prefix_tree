@@ -35,14 +35,14 @@ class Tree
   end
 
   def write_file
-    File.open('files/write', 'w') do |file|
-      w = list
-      w.each { |word| file.write(word << "\n") }
+    File.open('../files/write', 'w') do |file|
+      words = list
+      words.each { |word| file.write(word << "\n") }
     end
   end
 
   def read_file
-    File.open('files/read', 'r') do |f|
+    File.open('../files/read', 'r') do |f|
       f.each_line { |line| add(line) }
     end
   end
@@ -68,7 +68,7 @@ class Tree
   end
 
   def write_zip
-    Zip::File.open('files/write.zip') do |zf|
+    Zip::File.open('../files/write.zip') do |zf|
       zf.get_output_stream('write') do |f|
         words = list
         words.each { |word| f.puts word + "\n" }
@@ -77,8 +77,8 @@ class Tree
   end
 
   def read_zip
-    Zip::File.open('files/read.zip') do |zf|
+    Zip::File.open('../files/read.zip') do |zf|
       zf.read('read').each_line { |line| add(line) }
     end
+    end
   end
-end
