@@ -5,7 +5,7 @@ require 'zip'
 require "debugger"
 
 class Tree
-  WORD_MIN_LENGTH = 5
+  WORD_MIN_LENGTH = 3
 
   def initialize
     @root = Node.new
@@ -34,15 +34,15 @@ class Tree
     return current.is_word
   end
 
-  def write_file
-    File.open('../files/write', 'w') do |file|
+  def write_file(path = 'files/write')
+    File.open(path, 'w') do |file|
       words = list
       words.each { |word| file.write(word << "\n") }
     end
   end
 
-  def read_file
-    File.open('../files/read', 'r') do |f|
+  def read_file(path = 'files/read')
+    File.open(path, 'r') do |f|
       f.each_line { |line| add(line) }
     end
   end
@@ -67,8 +67,8 @@ class Tree
     words_holder
   end
 
-  def write_zip
-    Zip::File.open('../files/write.zip') do |zf|
+  def write_zip(path = '/files/write.zip')
+    Zip::File.open(path) do |zf|
       zf.get_output_stream('write') do |f|
         words = list
         words.each { |word| f.puts word + "\n" }
@@ -76,8 +76,8 @@ class Tree
     end
   end
 
-  def read_zip
-    Zip::File.open('../files/read.zip') do |zf|
+  def read_zip(path = 'files/read.zip')
+    Zip::File.open(path) do |zf|
       zf.read('read').each_line { |line| add(line) }
     end
     end
