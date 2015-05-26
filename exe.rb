@@ -31,7 +31,7 @@ test.read_zip
 puts "add 'add_method'"
 test.add('add_method')
 puts "include 'add_method'"
-test.include?('add_method')
+p test.include?('add_method')
 puts 'reading from file'
 test.read_file
 puts 'reading from zip file'
@@ -42,3 +42,4 @@ puts 'write file'
 test.write_file
 puts 'write zipfile'
 test.write_zip
+#p File.readable?('spec/test_files/write')

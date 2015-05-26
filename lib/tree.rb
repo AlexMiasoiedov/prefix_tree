@@ -42,14 +42,13 @@ class Tree
   end
 
   def read_file(path = 'files/read')
-    File.open(path, 'r') do |f|
-      f.each_line { |line| add(line) }
+    File.open(path, 'r') do |f| f.each_line { |line| add(line) }
     end
   end
 
   def list(str = '')
     words_holder = Array.new
-    self.find_words(str, words_holder)
+    find_words(str, words_holder)
   end
 
   def find_words(prefix, words_holder)
@@ -67,7 +66,7 @@ class Tree
     words_holder
   end
 
-  def write_zip(path = '/files/write.zip')
+  def write_zip(path = 'files/write.zip')
     Zip::File.open(path) do |zf|
       zf.get_output_stream('write') do |f|
         words = list
@@ -76,9 +75,8 @@ class Tree
     end
   end
 
-  def read_zip(path = 'files/read.zip')
-    Zip::File.open(path) do |zf|
-      zf.read('read').each_line { |line| add(line) }
-    end
+  def read_zip(path = 'files/read.zip', file = 'read')
+    Zip::File.open(path) do |zf| zf.read(file).each_line { |line| add(line) }
     end
   end
+end
