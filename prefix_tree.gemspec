@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.authors = ["CHI Software", "Alexander Miasoiedov"]
   s.email = 'offshore@mail.com'
   s.files = [
-    "lib/tree.rb",
+    "lib/prefix_tree.rb",
     "lib/tree/node.rb",
     "files/write",
     "files/read",

@@ -1,4 +1,4 @@
-require_relative 'lib/tree.rb'
+require_relative 'lib/prefix_tree.rb'
 
 test=Tree.new
 =begin

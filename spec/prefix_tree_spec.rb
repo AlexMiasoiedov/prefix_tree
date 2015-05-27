@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-require_relative '../lib/tree'
+require_relative '../lib/prefix_tree'
 
 RSpec.describe do
   tree = Tree.new
