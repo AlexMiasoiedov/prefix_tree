@@ -10,3 +10,5 @@ gem "debugger"
 gem "codeclimate-test-reporter", group: :test
 
 gem 'simplecov', :require => false, :group => :test
+
+gem 'drbservice', '~> 1.0.4'
