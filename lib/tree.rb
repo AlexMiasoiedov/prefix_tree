@@ -42,8 +42,7 @@ class Tree
   end
 
   def read_file(path = 'files/read')
-    File.open(path, 'r') do |f| f.each_line { |line| add(line) }
-    end
+    File.open(path, 'r') { |f| f.each_line { |line| add(line.chomp) } }
   end
 
   def list(str = '')
@@ -76,7 +75,6 @@ class Tree
   end
 
   def read_zip(path = 'files/read.zip', file = 'read')
-    Zip::File.open(path) do |zf| zf.read(file).each_line { |line| add(line) }
-    end
+    Zip::File.open(path) { |zf| zf.read(file).each_line { |line| add(line.chomp) } }
   end
 end

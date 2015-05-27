@@ -2,43 +2,40 @@ require 'spec_helper'
 
 require_relative '../lib/tree'
 
-#require 'debugger'
-
 RSpec.describe do
   tree = Tree.new
   tree.add('testtree')
 
   describe 'add' do
     it 'the word' do
-      expected = true
       tree.add('something')
-      expect(tree.include?('something')).to eq(expected)
+      expect(tree.include?('something')).to eq(true)
     end
   end
 
   describe 'include' do
     it 'word "testtree"' do
       expect(tree.include?('testtree')).to eq(true)
-    end
-  end
-  #debugger
-  describe 'write and read' do
-    it 'file' do
-      tree.write_file('spec/test_files/write')
-      expect(tree.read_file('spec/test_files/write')).to eq(tree.list)
+      expect(tree.include?('tttttttt')).to eq(false)
     end
   end
 
-  describe 'write and read zip' do
-    it 'file' do
-      tree.write_zip('spec/test_files/write.zip')
-      expect(tree.read_zip('spec/test_files/write.zip', 'write').split("\n")).to eq(tree.list)
+  describe 'write' do
+    it "file" do
+      expect(tree.write_file('spec/test_files/write')).to eq(tree.list.each { |word| word << "\n" })
+    end
+    it "zip" do
+      expect(tree.write_zip('spec/test_files/write.zip')).to eq(tree.list)
     end
   end
 
-  describe "write file" do
-    it "readable" do
-      expect(File.readable?('spec/test_files/write')).to eq(true)
+  describe 'read' do
+    tree.read_file('spec/test_files/read')
+    tree.read_zip('spec/test_files/read.zip')
+    it 'file' do
+      expect(tree.include?('read')).to eq(true)
+      expect(tree.include?('read_zip')).to eq(true)
+      expect(tree.include?('readd')).to eq(false)
     end
   end
 end
