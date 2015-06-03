@@ -42,25 +42,22 @@ class Tree
   end
 
   def read_file(path = 'files/read')
-    File.open(path, 'r') { |f| f.each_line { |line| add(line.chomp) } }
+    File.open(path, 'r') { |f| f.each_line { |line| add(line) } }
   end
 
   def list(str = '')
-    words_holder = Array.new
-    find_words(str, words_holder)
+    find_words(str)
   end
 
-  def find_words(prefix, words_holder)
+  def find_words(prefix, words_holder = [])
     current_node = @root
     prefix.split('').each do |node|
-      break current_node if current_node.children[node].nil?
+      break if current_node.children[node].nil?
       current_node = current_node.children[node]
     end
     words_holder.push(prefix) if current_node.is_word && prefix.length >= WORD_MIN_LENGTH
     current_node.children.each do |key, val|
-      pref = ''
-      pref << prefix
-      find_words(pref << key, words_holder)
+      find_words(prefix + key, words_holder)
     end
     words_holder
   end

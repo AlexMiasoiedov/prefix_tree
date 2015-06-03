@@ -9,19 +9,14 @@ before do
   @tree.add('tree_is_working')
 end
 
-get "/" do erb :index end
+get "/" do
+  erb :index 
+end
 
-get "/add" do erb :add end
-
-get "/list" do erb :add end
-=begin
-post "/add" do
+get "/add" do
   @tree.add(params[:word])
-  "successfully add word: #{params[:word]}"
 end
 
-post "/list" do
-  words = p @tree.list
-  "the list of words is: #{words}"
+get "/list" do
+  "@tree.include?('tree_is_working')"
 end
-=end

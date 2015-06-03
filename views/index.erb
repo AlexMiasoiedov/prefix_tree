@@ -5,21 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="ajax.js"></script>
     <title>prefix tree</title>
-
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
+    <!--
+    <script type="text/javascript">
+      $(document).ready(function (){
+        $('#get-list').on('click', function(){
+          $.ajax({
+            url: '/list',
+            type: 'GET',
+            success: function(resp){
+              $('#list').append(resp);
+            }
+          })
+        })
+      });
+    </script>      
+    -->
   </head>
   <body>
 
-  <form action="/add" method="post" class="form-inline">
+  <form class="form-inline">
     <input type="text" name="word">
-    <input type="submit" value="add" class="btn btn-primary">
+    <input id="add" type="submit" value="add" class="btn btn-primary">
   </form>
-
+  <div id="list"></div>
+  <button id="get-list">list</button>
+<!--
   <form action="/list" method="post">
     <input type="submit" value="list" class="btn btn-primary">
   </form>
-
+-->
 </body>
