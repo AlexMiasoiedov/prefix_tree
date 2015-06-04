@@ -26,18 +26,19 @@ class Tree
   end
 
   def include?(str)
-    current = @root
+    current_node = @root
     str.split('').each do |ch|
-      return false if current.children[ch].nil?
-      current = current.children[ch]
+      return false if current_node.children[ch].nil?
+      current_node = current_node.children[ch]
     end
-    return current.is_word
+    #debugger
+    return current_node.is_word
   end
 
   def write_file(path = 'files/write')
     File.open(path, 'w') do |file|
       words = list
-      words.each { |word| file.write(word << "\n") }
+      words.each { |word| file.write(word + "\n") }
     end
   end
 
@@ -46,18 +47,19 @@ class Tree
   end
 
   def list(str = '')
-    find_words(str)
+    search_root_node = find_node(str)
+    debugger
+    if search_root_node
+      find_words(search_root_node, str)
+    else
+      []
+    end
   end
 
-  def find_words(prefix, words_holder = [])
-    current_node = @root
-    prefix.split('').each do |node|
-      break if current_node.children[node].nil?
-      current_node = current_node.children[node]
-    end
+  def find_words(current_node, prefix, words_holder = [])
     words_holder.push(prefix) if current_node.is_word && prefix.length >= WORD_MIN_LENGTH
     current_node.children.each do |key, val|
-      find_words(prefix + key, words_holder)
+      find_words(val, prefix + key, words_holder)
     end
     words_holder
   end
@@ -73,5 +75,15 @@ class Tree
 
   def read_zip(path = 'files/read.zip', file = 'read')
     Zip::File.open(path) { |zf| zf.read(file).each_line { |line| add(line.chomp) } }
+  end
+
+  def find_node(str = '')
+    current_node = @root
+    str.split('').each do |ch|
+      return false if current_node.children[ch].nil?
+      current_node = current_node.children[ch]
+    end
+    #debugger
+    return current_node
   end
 end

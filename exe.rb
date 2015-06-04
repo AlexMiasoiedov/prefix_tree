@@ -30,16 +30,25 @@ test.read_zip
 =end
 puts "add 'add_method'"
 test.add('add_method')
-puts "include 'add_method'"
-p test.include?('add_method')
+
 puts 'reading from file'
 test.read_file
+
 puts 'reading from zip file'
 test.read_zip
-puts 'tree list'
+
+puts "include 'read'"
+p test.include?('read')
+
+puts 'tree list with specific prefix'
+p test.list('ad')
+
+puts 'tree list without prefix'
 p test.list
+
 puts 'write file'
 test.write_file
+
 puts 'write zipfile'
 test.write_zip
 #p File.readable?('spec/test_files/write')
