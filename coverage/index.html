@@ -5,7 +5,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <script src='./assets/0.10.0/application.js' type='text/javascript'></script>    
     <link href='./assets/0.10.0/application.css' media='screen, projection, print' rel='stylesheet' type='text/css'>
-    <link rel="shortcut icon" type="image/png" href="./assets/0.10.0/favicon_red.png" />
+    <link rel="shortcut icon" type="image/png" href="./assets/0.10.0/favicon_green.png" />
     <link rel="icon" type="image/png" href="./assets/0.10.0/favicon.png" />
   </head>
   
@@ -14,27 +14,27 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-05-25T18:23:25+03:00">2015-05-25T18:23:25+03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-06-05T14:30:16+03:00">2015-06-05T14:30:16+03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">69.74%</span></span>
+    (<span class="covered_percent"><span class="green">100.0%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.5
+         15.97
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>3</b> files in total.
-    <b>76</b> relevant lines. 
-    <span class="green"><b>53</b> lines covered</span> and
-    <span class="red"><b>23</b> lines missed </span>
+    <b>107</b> relevant lines. 
+    <span class="green"><b>107</b> lines covered</span> and
+    <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -51,33 +51,33 @@
     <tbody>
       
       <tr>
-        <td class="strong"><a href="#2a401a3ed26bf110cee7b9aea1eedfad4a068afd" class="src_link" title="lib/tree.rb">lib/tree.rb</a></td>
-        <td class="red strong">57.69 %</td>
-        <td>84</td>
-        <td>52</td>
-        <td>30</td>
-        <td>22</td>
-        <td>2.9</td>
+        <td class="strong"><a href="#ea07f01659847283ad095090d2d2ad6b4119c026" class="src_link" title="lib/prefix_tree.rb">lib/prefix_tree.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>92</td>
+        <td>54</td>
+        <td>54</td>
+        <td>0</td>
+        <td>29.1</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#5786f3f30ef2102c94a6724239c0bfd450a0ddb8" class="src_link" title="lib/tree/node.rb">lib/tree/node.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>8</td>
-        <td>5</td>
-        <td>5</td>
+        <td>9</td>
+        <td>6</td>
+        <td>6</td>
         <td>0</td>
-        <td>4.4</td>
+        <td>14.3</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#5398f6a8f252deeabf9db490554e7ed162afe6b3" class="src_link" title="spec/prefix_tree_spec.rb">spec/prefix_tree_spec.rb</a></td>
-        <td class="green strong">94.74 %</td>
-        <td>31</td>
-        <td>19</td>
-        <td>18</td>
-        <td>1</td>
-        <td>0.9</td>
+        <td class="green strong">100.0 %</td>
+        <td>75</td>
+        <td>47</td>
+        <td>47</td>
+        <td>0</td>
+        <td>1.1</td>
       </tr>
       
     </tbody>
@@ -96,14 +96,14 @@
     
       <div class="source_files">
       
-        <div class="source_table" id="2a401a3ed26bf110cee7b9aea1eedfad4a068afd">
+        <div class="source_table" id="ea07f01659847283ad095090d2d2ad6b4119c026">
   <div class="header">
-    <h3>lib/tree.rb</h3>
-    <h4><span class="red">57.69 %</span> covered</h4>
+    <h3>lib/prefix_tree.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>52</b> relevant lines. 
-      <span class="green"><b>30</b> lines covered</span> and
-      <span class="red"><b>22</b> lines missed.</span>
+      <b>54</b> relevant lines. 
+      <span class="green"><b>54</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
   
@@ -191,427 +191,475 @@
         <li class="covered" data-hits="1" data-linenumber="14">
           <span class="hits">1</span>
           
-          <code class="ruby">  def add(str)</code>
+          <code class="ruby">  def add(str = '')</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="15">
-          <span class="hits">2</span>
+        <li class="never" data-hits="" data-linenumber="15">
+          
+          
+          <code class="ruby">    #debugger </code>
+        </li>
+      
+        <li class="covered" data-hits="8" data-linenumber="16">
+          <span class="hits">8</span>
+          
+          <code class="ruby">    return if str == ''</code>
+        </li>
+      
+        <li class="covered" data-hits="7" data-linenumber="17">
+          <span class="hits">7</span>
           
           <code class="ruby">    str.chomp!</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="16">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="7" data-linenumber="18">
+          <span class="hits">7</span>
           
           <code class="ruby">    current = @root</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="17">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="7" data-linenumber="19">
+          <span class="hits">7</span>
           
           <code class="ruby">    str.split('').each do |ch|</code>
         </li>
       
-        <li class="covered" data-hits="17" data-linenumber="18">
-          <span class="hits">17</span>
+        <li class="covered" data-hits="83" data-linenumber="20">
+          <span class="hits">83</span>
           
           <code class="ruby">      next_node = current.children[ch]</code>
         </li>
       
-        <li class="covered" data-hits="17" data-linenumber="19">
-          <span class="hits">17</span>
+        <li class="covered" data-hits="83" data-linenumber="21">
+          <span class="hits">83</span>
           
           <code class="ruby">      if next_node.nil?</code>
         </li>
       
-        <li class="covered" data-hits="17" data-linenumber="20">
-          <span class="hits">17</span>
+        <li class="covered" data-hits="40" data-linenumber="22">
+          <span class="hits">40</span>
           
           <code class="ruby">        next_node = Node.new</code>
         </li>
       
-        <li class="covered" data-hits="17" data-linenumber="21">
-          <span class="hits">17</span>
+        <li class="covered" data-hits="40" data-linenumber="23">
+          <span class="hits">40</span>
           
           <code class="ruby">        current.children[ch] = next_node</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="22">
-          
-          
-          <code class="ruby">      end</code>
-        </li>
-      
-        <li class="covered" data-hits="17" data-linenumber="23">
-          <span class="hits">17</span>
-          
-          <code class="ruby">      current = next_node</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="24">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">      end</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="25">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="83" data-linenumber="25">
+          <span class="hits">83</span>
           
-          <code class="ruby">    current.is_word = true</code>
+          <code class="ruby">      current = next_node</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="26">
           
           
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="covered" data-hits="7" data-linenumber="27">
+          <span class="hits">7</span>
+          
+          <code class="ruby">    current.is_word = true</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="28">
+          
+          
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="27">
+        <li class="never" data-hits="" data-linenumber="29">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="28">
+        <li class="covered" data-hits="1" data-linenumber="30">
           <span class="hits">1</span>
           
-          <code class="ruby">  def include?(str)</code>
+          <code class="ruby">  def include?(str = '')</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="29">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="10" data-linenumber="31">
+          <span class="hits">10</span>
           
-          <code class="ruby">    current = @root</code>
+          <code class="ruby">    current_node = @root</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="30">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="10" data-linenumber="32">
+          <span class="hits">10</span>
           
           <code class="ruby">    str.split('').each do |ch|</code>
         </li>
       
-        <li class="covered" data-hits="17" data-linenumber="31">
-          <span class="hits">17</span>
+        <li class="covered" data-hits="113" data-linenumber="33">
+          <span class="hits">113</span>
           
-          <code class="ruby">      return false if current.children[ch].nil?</code>
+          <code class="ruby">      return false if current_node.children[ch].nil?</code>
         </li>
       
-        <li class="covered" data-hits="17" data-linenumber="32">
-          <span class="hits">17</span>
+        <li class="covered" data-hits="110" data-linenumber="34">
+          <span class="hits">110</span>
           
-          <code class="ruby">      current = current.children[ch]</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="33">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="34">
-          <span class="hits">2</span>
-          
-          <code class="ruby">    return current.is_word</code>
+          <code class="ruby">      current_node = current_node.children[ch]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="35">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="36">
           
           
+          <code class="ruby">    #debugger</code>
+        </li>
+      
+        <li class="covered" data-hits="7" data-linenumber="37">
+          <span class="hits">7</span>
+          
+          <code class="ruby">    return current_node.is_word</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="38">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="39">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="37">
+        <li class="covered" data-hits="1" data-linenumber="40">
           <span class="hits">1</span>
           
           <code class="ruby">  def write_file(path = 'files/write')</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="38">
+        <li class="covered" data-hits="1" data-linenumber="41">
           <span class="hits">1</span>
           
           <code class="ruby">    File.open(path, 'w') do |file|</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="39">
-          
+        <li class="covered" data-hits="1" data-linenumber="42">
+          <span class="hits">1</span>
           
           <code class="ruby">      words = list</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="40">
+        <li class="covered" data-hits="7" data-linenumber="43">
+          <span class="hits">7</span>
           
-          
-          <code class="ruby">      words.each { |word| file.write(word &lt;&lt; &quot;\n&quot;) }</code>
+          <code class="ruby">      words.each { |word| file.write(word + &quot;\n&quot;) }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="41">
+        <li class="never" data-hits="" data-linenumber="44">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="42">
+        <li class="never" data-hits="" data-linenumber="45">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="43">
+        <li class="never" data-hits="" data-linenumber="46">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="44">
+        <li class="covered" data-hits="1" data-linenumber="47">
           <span class="hits">1</span>
           
           <code class="ruby">  def read_file(path = 'files/read')</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="45">
+        <li class="covered" data-hits="6" data-linenumber="48">
+          <span class="hits">6</span>
           
-          
-          <code class="ruby">    File.open(path, 'r') do |f|</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="46">
-          
-          
-          <code class="ruby">      f.each_line { |line| add(line) }</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="47">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="48">
-          
-          
-          <code class="ruby">  end</code>
+          <code class="ruby">    File.open(path, 'r') { |f| f.each_line { |line| add(line) } }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="49">
           
           
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="50">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="50">
+        <li class="covered" data-hits="1" data-linenumber="51">
           <span class="hits">1</span>
           
           <code class="ruby">  def list(str = '')</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="51">
+        <li class="covered" data-hits="8" data-linenumber="52">
+          <span class="hits">8</span>
           
-          
-          <code class="ruby">    words_holder = Array.new</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="52">
-          
-          
-          <code class="ruby">    self.find_words(str, words_holder)</code>
+          <code class="ruby">    search_root_node = find_node(str)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="53">
           
           
+          <code class="ruby">    #debugger</code>
+        </li>
+      
+        <li class="covered" data-hits="8" data-linenumber="54">
+          <span class="hits">8</span>
+          
+          <code class="ruby">    if search_root_node</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="55">
+          <span class="hits">6</span>
+          
+          <code class="ruby">      find_words(search_root_node, str)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="56">
+          
+          
+          <code class="ruby">    else</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="57">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      []</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="58">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="59">
+          
+          
           <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="54">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="55">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def find_words(prefix, words_holder)</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="56">
-          
-          
-          <code class="ruby">    current_node = @root</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="57">
-          
-          
-          <code class="ruby">    prefix.split('').each do |node|</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="58">
-          
-          
-          <code class="ruby">      break current_node if current_node.children[node].nil?</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="59">
-          
-          
-          <code class="ruby">      current_node = current_node.children[node]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="60">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="61">
+        <li class="covered" data-hits="1" data-linenumber="61">
+          <span class="hits">1</span>
           
+          <code class="ruby">  def find_words(current_node, prefix, words_holder = [])</code>
+        </li>
+      
+        <li class="covered" data-hits="213" data-linenumber="62">
+          <span class="hits">213</span>
           
           <code class="ruby">    words_holder.push(prefix) if current_node.is_word &amp;&amp; prefix.length &gt;= WORD_MIN_LENGTH</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="62">
-          
+        <li class="covered" data-hits="213" data-linenumber="63">
+          <span class="hits">213</span>
           
           <code class="ruby">    current_node.children.each do |key, val|</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="63">
+        <li class="covered" data-hits="207" data-linenumber="64">
+          <span class="hits">207</span>
           
-          
-          <code class="ruby">      pref = ''</code>
+          <code class="ruby">      find_words(val, prefix + key, words_holder)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="64">
-          
-          
-          <code class="ruby">      pref &lt;&lt; prefix</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="65">
-          
-          
-          <code class="ruby">      find_words(pref &lt;&lt; key, words_holder)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="66">
+        <li class="never" data-hits="" data-linenumber="65">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="67">
-          
+        <li class="covered" data-hits="213" data-linenumber="66">
+          <span class="hits">213</span>
           
           <code class="ruby">    words_holder</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="67">
+          
+          
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="68">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="69">
+        <li class="covered" data-hits="1" data-linenumber="69">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">  def write_zip(path = 'files/write.zip')</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="70">
           <span class="hits">1</span>
           
-          <code class="ruby">  def write_zip(path = '/files/write.zip')</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="71">
-          
-          
           <code class="ruby">    Zip::File.open(path) do |zf|</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="72">
-          
+        <li class="covered" data-hits="1" data-linenumber="71">
+          <span class="hits">1</span>
           
           <code class="ruby">      zf.get_output_stream('write') do |f|</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="73">
-          
+        <li class="covered" data-hits="1" data-linenumber="72">
+          <span class="hits">1</span>
           
           <code class="ruby">        words = list</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="74">
-          
+        <li class="covered" data-hits="7" data-linenumber="73">
+          <span class="hits">7</span>
           
           <code class="ruby">        words.each { |word| f.puts word + &quot;\n&quot; }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="75">
+        <li class="never" data-hits="" data-linenumber="74">
           
           
           <code class="ruby">      end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="76">
+        <li class="never" data-hits="" data-linenumber="75">
           
           
           <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="76">
+          
+          
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="77">
           
           
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="78">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def read_zip(path = 'files/read.zip', file = 'read')</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="79">
+          <span class="hits">3</span>
+          
+          <code class="ruby">    Zip::File.open(path) { |zf| zf.read(file).each_line { |line| add(line.chomp) } }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="80">
+          
+          
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="78">
+        <li class="never" data-hits="" data-linenumber="81">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="79">
+        <li class="covered" data-hits="1" data-linenumber="82">
           <span class="hits">1</span>
           
-          <code class="ruby">  def read_zip(path = 'files/read.zip')</code>
+          <code class="ruby">  private</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="80">
+        <li class="covered" data-hits="1" data-linenumber="83">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">    Zip::File.open(path) do |zf|</code>
+          <code class="ruby">  def find_node(str = '')</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="81">
+        <li class="covered" data-hits="8" data-linenumber="84">
+          <span class="hits">8</span>
           
-          
-          <code class="ruby">      zf.read('read').each_line { |line| add(line) }</code>
+          <code class="ruby">    current_node = @root</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="82">
+        <li class="covered" data-hits="8" data-linenumber="85">
+          <span class="hits">8</span>
+          
+          <code class="ruby">    str.split('').each do |ch|</code>
+        </li>
+      
+        <li class="covered" data-hits="12" data-linenumber="86">
+          <span class="hits">12</span>
+          
+          <code class="ruby">      return false if current_node.children[ch].nil?</code>
+        </li>
+      
+        <li class="covered" data-hits="10" data-linenumber="87">
+          <span class="hits">10</span>
+          
+          <code class="ruby">      current_node = current_node.children[ch]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="88">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="83">
+        <li class="never" data-hits="" data-linenumber="89">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">    #debugger</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="84">
+        <li class="covered" data-hits="6" data-linenumber="90">
+          <span class="hits">6</span>
+          
+          <code class="ruby">    return current_node</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="91">
           
           
           <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="92">
+          
+          
+          <code class="ruby">end</code>
         </li>
       
     </ol>
@@ -623,8 +671,8 @@
     <h3>lib/tree/node.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>5</b> relevant lines. 
-      <span class="green"><b>5</b> lines covered</span> and
+      <b>6</b> relevant lines. 
+      <span class="green"><b>6</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -656,25 +704,31 @@
           <code class="ruby">    def initialize</code>
         </li>
       
-        <li class="covered" data-hits="18" data-linenumber="5">
-          <span class="hits">18</span>
+        <li class="covered" data-hits="41" data-linenumber="5">
+          <span class="hits">41</span>
           
           <code class="ruby">      @children = { }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="6">
+        <li class="covered" data-hits="41" data-linenumber="6">
+          <span class="hits">41</span>
           
-          
-          <code class="ruby">    end</code>
+          <code class="ruby">      @is_word = false</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="7">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="8">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="9">
           
           
           <code class="ruby">end</code>
@@ -687,11 +741,11 @@
         <div class="source_table" id="5398f6a8f252deeabf9db490554e7ed162afe6b3">
   <div class="header">
     <h3>spec/prefix_tree_spec.rb</h3>
-    <h4><span class="green">94.74 %</span> covered</h4>
+    <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>19</b> relevant lines. 
-      <span class="green"><b>18</b> lines covered</span> and
-      <span class="red"><b>1</b> lines missed.</span>
+      <b>47</b> relevant lines. 
+      <span class="green"><b>47</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
   
@@ -713,7 +767,7 @@
         <li class="covered" data-hits="1" data-linenumber="3">
           <span class="hits">1</span>
           
-          <code class="ruby">require_relative '../lib/tree'</code>
+          <code class="ruby">require_relative '../lib/prefix_tree'</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="4">
@@ -731,154 +785,418 @@
         <li class="covered" data-hits="1" data-linenumber="6">
           <span class="hits">1</span>
           
-          <code class="ruby">	tree = Tree.new</code>
+          <code class="ruby">  tree = Tree.new</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="7">
           <span class="hits">1</span>
           
-          <code class="ruby">	tree.add('testtree')</code>
+          <code class="ruby">  tree.add('testtree')</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="8">
+        <li class="covered" data-hits="1" data-linenumber="8">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">  tree.add('testtabdh')</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="9">
           <span class="hits">1</span>
           
-          <code class="ruby">  describe 'add' do</code>
+          <code class="ruby">  tree.add('someone')</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="10">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="10">
           
-          <code class="ruby">    it 'the word' do</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="11">
           <span class="hits">1</span>
           
-          <code class="ruby">      expected = true</code>
+          <code class="ruby">  describe '#add' do</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="12">
           <span class="hits">1</span>
           
-          <code class="ruby">      tree.add('something')</code>
+          <code class="ruby">    it 'add the word to the tree' do</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="13">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(tree.include?('something')).to eq(expected)</code>
+          <code class="ruby">      tree.add('something')</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="14">
+        <li class="covered" data-hits="1" data-linenumber="14">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">    end</code>
+          <code class="ruby">      expect(tree.include?('something')).to eq(true)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="15">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="16">
+        <li class="covered" data-hits="1" data-linenumber="16">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">    it '&quot;add&quot; method return nil if he take NO parameter' do</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="17">
           <span class="hits">1</span>
           
-          <code class="ruby">  describe 'include' do</code>
+          <code class="ruby">      expect(tree.add).to eq(nil)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="18">
-          <span class="hits">1</span>
-          
-          <code class="ruby">		it 'word &quot;testtree&quot;' do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="19">
-          <span class="hits">1</span>
-          
-          <code class="ruby">			expected = true</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="20">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      expect(tree.include?('testtree')).to eq(expected)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="21">
+        <li class="never" data-hits="" data-linenumber="18">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="22">
+        <li class="never" data-hits="" data-linenumber="19">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="23">
+        <li class="never" data-hits="" data-linenumber="20">
           
           
           <code class="ruby"></code>
         </li>
       
+        <li class="covered" data-hits="1" data-linenumber="21">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  describe '#include?' do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="22">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    it 'the tree include the words that user added?' do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="23">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(tree.include?('testtree')).to eq(true)</code>
+        </li>
+      
         <li class="covered" data-hits="1" data-linenumber="24">
           <span class="hits">1</span>
           
-          <code class="ruby">  describe 'write' do</code>
+          <code class="ruby">      expect(tree.include?('testtre')).to eq(false)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="25">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    it 'file' do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="26">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      expected = true</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="27">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      tree.write_file('../test/test_files/write')</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="28">
-          
-          
-          <code class="ruby">      expect(tree.read_file('../test/test_files/write')).to eq(expected)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="29">
+        <li class="never" data-hits="" data-linenumber="25">
           
           
           <code class="ruby">    end</code>
         </li>
       
+        <li class="covered" data-hits="1" data-linenumber="26">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    it 'the tree include the words that was added from read file?' do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="27">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      tree.read_file</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="28">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(tree.include?('testing_read_file')).to eq(true)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="29">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(tree.include?('testing_readd_zip')).to eq(false)</code>
+        </li>
+      
         <li class="never" data-hits="" data-linenumber="30">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="31">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    it '&quot;include?&quot; return false if he take NO paramether?' do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="32">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(tree.include?).to eq(false)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="33">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="34">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="31">
+        <li class="never" data-hits="" data-linenumber="35">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="36">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  describe '#list' do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="37">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    it 'list all the words with specified prefix' do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="38">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(tree.list('testt1')).to eq([])</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="39">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(tree.list('testt').sort).to eq(['testtabdh', 'testtree'].sort)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="40">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="41">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    it 'list all the words' do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="42">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(tree.list.sort).to eq( [&quot;testtree&quot;, &quot;testtabdh&quot;, &quot;testing_read_file&quot;, &quot;testing_read_zip&quot;, &quot;someone&quot;, &quot;something&quot;].sort)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="43">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="44">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    it 'list unexisting words with specified prefix' do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="45">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(tree.list('yr')).to eq([])</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="46">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="47">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="48">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="49">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  describe '#write file' do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="50">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    it &quot;is words writed in the write file from tree?&quot; do</code>
+        </li>
+      
+        <li class="covered" data-hits="7" data-linenumber="51">
+          <span class="hits">7</span>
+          
+          <code class="ruby">      expect(tree.write_file('spec/test_files/write')).to eq(tree.list.each { |word| word + &quot;\n&quot; })</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="52">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="53">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="54">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  describe '#write zip file' do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="55">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    it &quot; is words writed in the write zip file from tree?&quot; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="56">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(tree.write_zip('spec/test_files/write.zip')).to eq(tree.list)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="57">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="58">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="59">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="60">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  describe '#read file' do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="61">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    tree.read_file('spec/test_files/read')</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="62">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    it 'is the words from read file added to the tree?' do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="63">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(tree.include?('testing_read_file')).to eq(true)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="64">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(tree.include?('testing_readd_file')).to eq(false)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="65">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="66">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="67">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="68">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  describe '#read.zip file' do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="69">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    tree.read_zip('spec/test_files/read.zip')</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="70">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    it 'is the words from read.zip file added to the tree?' do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="71">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(tree.include?('testing_read_zip')).to eq(true)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="72">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(tree.include?('testing_readd_zip')).to eq(false)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="73">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="74">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="75">
           
           
           <code class="ruby">end</code>

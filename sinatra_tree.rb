@@ -15,8 +15,9 @@ end
 
 get "/add" do
   @tree.add(params[:word])
+  @tree.write_file
 end
 
 get "/list" do
-  "@tree.include?('tree_is_working')"
+  p @tree.list
 end

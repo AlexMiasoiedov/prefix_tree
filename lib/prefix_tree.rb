@@ -11,7 +11,9 @@ class Tree
     @root = Node.new
   end
 
-  def add(str)
+  def add(str = '')
+    #debugger 
+    return if str == ''
     str.chomp!
     current = @root
     str.split('').each do |ch|
@@ -25,7 +27,7 @@ class Tree
     current.is_word = true
   end
 
-  def include?(str)
+  def include?(str = '')
     current_node = @root
     str.split('').each do |ch|
       return false if current_node.children[ch].nil?
@@ -48,7 +50,7 @@ class Tree
 
   def list(str = '')
     search_root_node = find_node(str)
-    debugger
+    #debugger
     if search_root_node
       find_words(search_root_node, str)
     else
@@ -77,6 +79,7 @@ class Tree
     Zip::File.open(path) { |zf| zf.read(file).each_line { |line| add(line.chomp) } }
   end
 
+  private
   def find_node(str = '')
     current_node = @root
     str.split('').each do |ch|

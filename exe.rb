@@ -31,6 +31,8 @@ test.read_zip
 puts "add 'add_method'"
 test.add('add_method')
 
+test.add
+
 puts 'reading from file'
 test.read_file
 

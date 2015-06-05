@@ -6,32 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="ajax.js"></script>
+    <!--<script src="ajax.js"></script>-->
     <title>prefix tree</title>
-    <!--
     <script type="text/javascript">
       $(document).ready(function (){
-        $('#get-list').on('click', function(){
+        $('#get-list').on('click', function(event){
+          event.preventDefault();
+
           $.ajax({
             url: '/list',
             type: 'GET',
             success: function(resp){
+              console.log(resp);
               $('#list').append(resp);
             }
           })
         })
+
+        $('#add-form').on('submit', function(event){
+          
+          $.ajax({
+            url: '/add',
+            type: 'GET',
+            data: $("#add-form").serialize(),
+            success: function(resp){
+              console.log(resp);
+            }
+          })
+          event.preventDefault();
+        })
       });
-    </script>      
-    -->
+    </script>
   </head>
   <body>
 
-  <form class="form-inline">
+  <form id="add-form" action="/add" method="GET">
     <input type="text" name="word">
-    <input id="add" type="submit" value="add" class="btn btn-primary">
+    <input id="add" type="submit" value="add" class="btn">
   </form>
   <div id="list"></div>
-  <button id="get-list">list</button>
+  <input id="get-list" type="submit">
+  <!--
+  <form id="list-form" >
+    <input type="text" name="prefix">
+    <input id="get-list" type="submit" value="list" class="btn">
+  </form>
+  -->
 <!--
   <form action="/list" method="post">
     <input type="submit" value="list" class="btn btn-primary">
