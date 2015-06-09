@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!--<script src="controller.js"></script>-->
+    <title>prefix tree</title>
+    <script type="text/javascript">
+      $(document).ready(function (){
+
+        $("#add-form").on('submit', function(event) {
+          event.preventDefault();
+          ajax_form_request('/add', "#add-form");
+        });
+
+        $("#list-form").on('submit', function(event) {
+          event.preventDefault();
+          ajax_form_request('/list', "#list-form");
+        });
+
+        $("#write").on('click', function(event) {
+          event.preventDefault();
+          ajax_request('/write_file');
+        });
+
+        $("#write-zip").on('click', function(event) {
+          event.preventDefault();
+          ajax_request('/write_zip');
+        });
+
+        $("#read").on('click', function(event) {
+          event.preventDefault();
+          ajax_request('read_file');
+        });
+
+        $("#read-zip").on('click', function(event) {
+          event.preventDefault();
+          ajax_request('read_zip');
+        });
+      });
+
+      function ajax_request(url) {
+        $.ajax({
+          url: url,
+          type: 'GET',
+          success: function(resp){
+            console.log(resp);
+          }
+        })
+      };
+
+      function ajax_form_request(url, id) {
+        $.ajax({
+          url: url,
+          type: 'GET',
+          data: $(id).serialize(),
+          success: function(resp){
+            console.log(resp);
+            if (id == "#list-form") {
+              $('#list-output').html("");
+              $('#list-output').append(resp);
+            }
+          }
+        })
+      };
+      
+    </script>
+  </head>
+  <body>
+
+  <form id="add-form" action="/add" method="GET">
+    <input type="text" name="word">
+    <input id="add" type="submit" value="add" class="btn">
+  </form>
+  <form id="list-form" action="/list" method="GET">
+    <input type="text" name="pref">
+    <input id="list" type="submit" value="list" class="btn">
+  </form>
+  <div id="list-output"></div>
+  <input id="write" type="button" value="write">
+  <input id="write-zip" type="button" value="write zip">
+  <input id="read" type="button" value="read">
+  <input id="read-zip" type="button" value="read zip">
+</body>

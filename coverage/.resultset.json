@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/al/prefix_tree/spec/prefix_tree_spec.rb": [
+      "/home/work/ruby_progets/prefix_tree/spec/prefix_tree_spec.rb": [
         1,
         null,
         1,
@@ -78,7 +78,7 @@
         null,
         null
       ],
-      "/home/al/prefix_tree/lib/prefix_tree.rb": [
+      "/home/work/ruby_progets/prefix_tree/lib/prefix_tree.rb": [
         1,
         null,
         1,
@@ -172,7 +172,7 @@
         null,
         null
       ],
-      "/home/al/prefix_tree/lib/tree/node.rb": [
+      "/home/work/ruby_progets/prefix_tree/lib/tree/node.rb": [
         1,
         1,
         1,
@@ -184,6 +184,6 @@
         null
       ]
     },
-    "timestamp": 1433503816
+    "timestamp": 1433753293
   }
 }

@@ -1,23 +1,17 @@
 require 'sinatra'
 
-require 'haml'
 
-require_relative 'lib/prefix_tree'
-
-before do
-  @tree = Tree.new
-  @tree.add('tree_is_working')
-end
+require_relative '../lib/prefix_tree'
+#require_relative 'helpers/def_tree'
 
 get "/" do
-  erb :index 
+  erb :index
 end
 
 get "/add" do
   @tree.add(params[:word])
-  @tree.write_file
 end
 
 get "/list" do
-  p @tree.list
+  p @tree.list(params[:pref])
 end
