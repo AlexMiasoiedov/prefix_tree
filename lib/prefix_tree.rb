@@ -42,6 +42,7 @@ class Tree
       words = list
       words.each { |word| file.write(word + "\n") }
     end
+    return nil
   end
 
   def read_file(path = 'files/read')
@@ -50,7 +51,6 @@ class Tree
 
   def list(str = '')
     search_root_node = find_node(str)
-    #debugger
     if search_root_node
       find_words(search_root_node, str)
     else
@@ -73,6 +73,7 @@ class Tree
         words.each { |word| f.puts word + "\n" }
       end
     end
+    return nil
   end
 
   def read_zip(path = 'files/read.zip', file = 'read')

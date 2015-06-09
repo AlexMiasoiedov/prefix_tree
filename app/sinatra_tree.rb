@@ -1,9 +1,13 @@
 require 'sinatra'
+require 'json'
+require 'debugger'
 
 require_relative '../lib/prefix_tree'
 
 tree = Tree.new
-tree.add('the-word')
+tree.add('word')
+tree.add('grrrr')
+tree.add('beeee')
 
 get "/" do
   erb :index
@@ -14,7 +18,10 @@ get "/add" do
 end
 
 get "/list" do
-  tree.list(params[:pref])
+  words_hash = {}
+  tree.list(params[:pref]).each { |word| words_hash[word] = word }
+#debugger
+  JSON.generate(words_hash)
 end
 
 get "/write_file" do 

@@ -15,7 +15,7 @@ GEM
     drbservice (1.0.4)
     haml (4.0.6)
       tilt
-    json (1.8.2)
+    json (1.8.3)
     rack (1.6.1)
     rack-protection (1.5.3)
       rack
@@ -52,6 +52,7 @@ DEPENDENCIES
   debugger
   drbservice (~> 1.0.4)
   haml (~> 4.0.6)
+  json (~> 1.8.3)
   rspec
   rubyzip
   simplecov
