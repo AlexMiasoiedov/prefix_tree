@@ -18,3 +18,5 @@ gem 'sinatra', '~> 1.4.6'
 gem 'haml', '~> 4.0.6'
 
 gem 'json', '~> 1.8.3'
+
+gem 'capybara'

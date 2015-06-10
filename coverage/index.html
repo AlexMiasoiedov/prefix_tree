@@ -14,27 +14,27 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-06-09T18:25:24+03:00">2015-06-09T18:25:24+03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-06-10T15:26:29+03:00">2015-06-10T15:26:29+03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">100.0%</span></span>
+    (<span class="covered_percent"><span class="green">93.55%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         30.47
+         24.13
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
-    <b>3</b> files in total.
-    <b>118</b> relevant lines. 
-    <span class="green"><b>118</b> lines covered</span> and
-    <span class="red"><b>0</b> lines missed </span>
+    <b>5</b> files in total.
+    <b>155</b> relevant lines. 
+    <span class="green"><b>145</b> lines covered</span> and
+    <span class="red"><b>10</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -51,13 +51,23 @@
     <tbody>
       
       <tr>
+        <td class="strong"><a href="#fe95b7c8c9575d8800129300b3077595f2e04d9b" class="src_link" title="app/sinatra_tree.rb">app/sinatra_tree.rb</a></td>
+        <td class="red strong">65.38 %</td>
+        <td>44</td>
+        <td>26</td>
+        <td>17</td>
+        <td>9</td>
+        <td>0.7</td>
+      </tr>
+      
+      <tr>
         <td class="strong"><a href="#9f3ad161dd4b6cac76e2d327148c8782df6bea84" class="src_link" title="lib/prefix_tree.rb">lib/prefix_tree.rb</a></td>
         <td class="green strong">100.0 %</td>
         <td>93</td>
         <td>54</td>
         <td>54</td>
         <td>0</td>
-        <td>52.4</td>
+        <td>54.0</td>
       </tr>
       
       <tr>
@@ -67,7 +77,7 @@
         <td>6</td>
         <td>6</td>
         <td>0</td>
-        <td>108.3</td>
+        <td>113.3</td>
       </tr>
       
       <tr>
@@ -78,6 +88,16 @@
         <td>58</td>
         <td>0</td>
         <td>2.0</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#be4547dc4b48ae3f174ca792fb6e926b9e5ecbe7" class="src_link" title="spec/user_capybara_spec.rb">spec/user_capybara_spec.rb</a></td>
+        <td class="green strong">90.91 %</td>
+        <td>22</td>
+        <td>11</td>
+        <td>10</td>
+        <td>1</td>
+        <td>0.9</td>
       </tr>
       
     </tbody>
@@ -95,6 +115,288 @@
       </div>
     
       <div class="source_files">
+      
+        <div class="source_table" id="fe95b7c8c9575d8800129300b3077595f2e04d9b">
+  <div class="header">
+    <h3>app/sinatra_tree.rb</h3>
+    <h4><span class="red">65.38 %</span> covered</h4>
+    <div>
+      <b>26</b> relevant lines. 
+      <span class="green"><b>17</b> lines covered</span> and
+      <span class="red"><b>9</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">require 'sinatra'</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
+          
+          <code class="ruby">require 'json'</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
+          
+          <code class="ruby">require 'debugger'</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="4">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
+          
+          <code class="ruby">require_relative '../lib/prefix_tree'</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="6">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="7">
+          <span class="hits">1</span>
+          
+          <code class="ruby">Capybara.app = Sinatra::Application</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="8">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="9">
+          <span class="hits">1</span>
+          
+          <code class="ruby">tree = Tree.new</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="10">
+          <span class="hits">1</span>
+          
+          <code class="ruby">tree.add('word')</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="11">
+          <span class="hits">1</span>
+          
+          <code class="ruby">tree.add('grrrr')</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="12">
+          <span class="hits">1</span>
+          
+          <code class="ruby">tree.add('beeee')</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="13">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="14">
+          <span class="hits">1</span>
+          
+          <code class="ruby">get &quot;/&quot; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="15">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  erb :index</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="16">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="17">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="18">
+          <span class="hits">1</span>
+          
+          <code class="ruby">get &quot;/add&quot; do</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="19">
+          
+          
+          <code class="ruby">  tree.add(params[:word])</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="20">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="21">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="22">
+          <span class="hits">1</span>
+          
+          <code class="ruby">get &quot;/list&quot; do</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="23">
+          
+          
+          <code class="ruby">  words_hash = {}</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="24">
+          
+          
+          <code class="ruby">  tree.list(params[:pref]).each { |word| words_hash[word] = word }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="25">
+          
+          
+          <code class="ruby">#debugger</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="26">
+          
+          
+          <code class="ruby">  JSON.generate(words_hash)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="27">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="28">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="29">
+          <span class="hits">1</span>
+          
+          <code class="ruby">get &quot;/write_file&quot; do </code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="30">
+          
+          
+          <code class="ruby">  tree.write_file('files/write')</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="31">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="32">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="33">
+          <span class="hits">1</span>
+          
+          <code class="ruby">get &quot;/write_zip&quot; do</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="34">
+          
+          
+          <code class="ruby">  tree.write_zip('files/write.zip')</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="35">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="36">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="37">
+          <span class="hits">1</span>
+          
+          <code class="ruby">get &quot;/read_file&quot; do</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="38">
+          
+          
+          <code class="ruby">  tree.read_file('files/read')</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="39">
+          
+          
+          <code class="ruby">  'success'</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="40">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="41">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="42">
+          <span class="hits">1</span>
+          
+          <code class="ruby">get &quot;/read_zip&quot; do</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="43">
+          
+          
+          <code class="ruby">  tree.read_zip('files/read.zip')</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="44">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
       
         <div class="source_table" id="9f3ad161dd4b6cac76e2d327148c8782df6bea84">
   <div class="header">
@@ -170,8 +472,8 @@
           <code class="ruby">  def initialize</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="11">
-          <span class="hits">14</span>
+        <li class="covered" data-hits="15" data-linenumber="11">
+          <span class="hits">15</span>
           
           <code class="ruby">    @root = Node.new</code>
         </li>
@@ -200,50 +502,50 @@
           <code class="ruby">    #debugger </code>
         </li>
       
-        <li class="covered" data-hits="47" data-linenumber="16">
-          <span class="hits">47</span>
+        <li class="covered" data-hits="50" data-linenumber="16">
+          <span class="hits">50</span>
           
           <code class="ruby">    return if str == ''</code>
         </li>
       
-        <li class="covered" data-hits="46" data-linenumber="17">
-          <span class="hits">46</span>
+        <li class="covered" data-hits="49" data-linenumber="17">
+          <span class="hits">49</span>
           
           <code class="ruby">    str.chomp!</code>
         </li>
       
-        <li class="covered" data-hits="46" data-linenumber="18">
-          <span class="hits">46</span>
+        <li class="covered" data-hits="49" data-linenumber="18">
+          <span class="hits">49</span>
           
           <code class="ruby">    current = @root</code>
         </li>
       
-        <li class="covered" data-hits="46" data-linenumber="19">
-          <span class="hits">46</span>
+        <li class="covered" data-hits="49" data-linenumber="19">
+          <span class="hits">49</span>
           
           <code class="ruby">    str.split('').each do |ch|</code>
         </li>
       
-        <li class="covered" data-hits="395" data-linenumber="20">
-          <span class="hits">395</span>
+        <li class="covered" data-hits="409" data-linenumber="20">
+          <span class="hits">409</span>
           
           <code class="ruby">      next_node = current.children[ch]</code>
         </li>
       
-        <li class="covered" data-hits="395" data-linenumber="21">
-          <span class="hits">395</span>
+        <li class="covered" data-hits="409" data-linenumber="21">
+          <span class="hits">409</span>
           
           <code class="ruby">      if next_node.nil?</code>
         </li>
       
-        <li class="covered" data-hits="309" data-linenumber="22">
-          <span class="hits">309</span>
+        <li class="covered" data-hits="323" data-linenumber="22">
+          <span class="hits">323</span>
           
           <code class="ruby">        next_node = Node.new</code>
         </li>
       
-        <li class="covered" data-hits="309" data-linenumber="23">
-          <span class="hits">309</span>
+        <li class="covered" data-hits="323" data-linenumber="23">
+          <span class="hits">323</span>
           
           <code class="ruby">        current.children[ch] = next_node</code>
         </li>
@@ -254,8 +556,8 @@
           <code class="ruby">      end</code>
         </li>
       
-        <li class="covered" data-hits="395" data-linenumber="25">
-          <span class="hits">395</span>
+        <li class="covered" data-hits="409" data-linenumber="25">
+          <span class="hits">409</span>
           
           <code class="ruby">      current = next_node</code>
         </li>
@@ -266,8 +568,8 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="46" data-linenumber="27">
-          <span class="hits">46</span>
+        <li class="covered" data-hits="49" data-linenumber="27">
+          <span class="hits">49</span>
           
           <code class="ruby">    current.is_word = true</code>
         </li>
@@ -710,14 +1012,14 @@
           <code class="ruby">    def initialize</code>
         </li>
       
-        <li class="covered" data-hits="323" data-linenumber="5">
-          <span class="hits">323</span>
+        <li class="covered" data-hits="338" data-linenumber="5">
+          <span class="hits">338</span>
           
           <code class="ruby">      @children = { }</code>
         </li>
       
-        <li class="covered" data-hits="323" data-linenumber="6">
-          <span class="hits">323</span>
+        <li class="covered" data-hits="338" data-linenumber="6">
+          <span class="hits">338</span>
           
           <code class="ruby">      @is_word = false</code>
         </li>
@@ -1302,6 +1604,156 @@
           
           
           <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
+        <div class="source_table" id="be4547dc4b48ae3f174ca792fb6e926b9e5ecbe7">
+  <div class="header">
+    <h3>spec/user_capybara_spec.rb</h3>
+    <h4><span class="green">90.91 %</span> covered</h4>
+    <div>
+      <b>11</b> relevant lines. 
+      <span class="green"><b>10</b> lines covered</span> and
+      <span class="red"><b>1</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">require 'spec_helper'</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="2">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
+          
+          <code class="ruby">require_relative '../app/sinatra_tree.rb'</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="4">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
+          
+          <code class="ruby">RSpec.describe do</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="6">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="7">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  describe '#homepage test', :type =&gt; :feature do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="8">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    it 'opens homepage' do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="9">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      visit '/'</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="10">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(page).to have_content 'Welcome to my page!'</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="11">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="12">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="13">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="14">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  describe '#list', :type =&gt; :feature do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="15">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    it 'user click on list button' do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="16">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      find('form').submit_form!</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="17">
+          
+          
+          <code class="ruby">      expect(page).to have_content 'word'</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="18">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="19">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="20">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="21">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="22">
+          
+          
+          <code class="ruby"></code>
         </li>
       
     </ol>
