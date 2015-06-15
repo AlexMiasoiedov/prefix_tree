@@ -4,7 +4,7 @@ require 'zip'
 
 require_relative '../lib/prefix_tree'
 
-RSpec.describe do
+RSpec.describe '#prefix_tree' do
 
   before do
     @tree = Tree.new
@@ -29,8 +29,8 @@ RSpec.describe do
       expect(@tree.include?('testtre')).to eq(false)
     end
     it 'the tree include the words that was added from read file?' do
-      @tree.read_file
-      expect(@tree.include?('testing_read_file')).to eq(true)
+      @tree.read_file('spec/test_files/read')
+      expect(@tree.include?('spek_read_file')).to eq(true)
       expect(@tree.include?('testing_readd_zip')).to eq(false)
     end
     it '"include?" return false if he take NO paramether?' do
@@ -76,7 +76,7 @@ RSpec.describe do
   describe '#read file' do
     it 'is the words from read file added to the tree?' do
       @tree.read_file('spec/test_files/read')
-      expect(@tree.include?('testing_read_file')).to eq(true)
+      expect(@tree.include?('spek_read_file')).to eq(true)
       expect(@tree.include?('testing_readd_file')).to eq(false)
     end
   end
@@ -84,7 +84,7 @@ RSpec.describe do
   describe '#read.zip file' do
     it 'is the words from read.zip file added to the tree?' do
       @tree.read_zip('spec/test_files/read.zip')
-      expect(@tree.include?('testing_read_zip')).to eq(true)
+      expect(@tree.include?('spec_read_zip')).to eq(true)
       expect(@tree.include?('testing_readd_zip')).to eq(false)
     end
   end

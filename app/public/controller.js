@@ -1,19 +1,21 @@
       $(document).ready(function (){
 
-        ajax_form_request('/list', "#list-form");
+        list_request();
 
         $("#add-form").on('submit', function(event) {
           event.preventDefault();
-          ajax_form_request('/add', "#add-form");
-          ajax_form_request('/list', "#list-form");
-          //var added_word = document.getElementById("#text-area");
-          //$("#notifications").append(added_word.value);
-          //$("#notifications").append($("#add-form").serialize());
+          var added_word = document.getElementById("text-area").value;
+          if(added_word == '') {
+            $("b#new-word").append(added_word);
+            $("div#notific").slideDown();
+            $("div#notific").fadeOut();
+            add_word();
+          }
         });
 
         $("#list-form").on('submit', function(event) {
           event.preventDefault();
-          ajax_form_request('/list', "#list-form");
+          list_request();
         });
 
         $("#write").on('click', function(event) {
@@ -29,13 +31,13 @@
         $("#read").on('click', function(event) {
           event.preventDefault();
           ajax_request('read_file');
-          ajax_form_request('/list', "#list-form");
+          list_request();
         });
 
         $("#read-zip").on('click', function(event) {
           event.preventDefault();
           ajax_request('read_zip');
-          ajax_form_request('/list', "#list-form");
+          list_request();
         });
       });
 
@@ -49,22 +51,34 @@
         });
       };
 
-      function ajax_form_request(url, id) {
+      function list_request() {
         $.ajax({
-          url: url,
+          url: '/list',
           type: 'GET',
-          data: $(id).serialize(),
+          data: $("#list-form").serialize(),
           success: function(resp){
             console.log(resp);
             var arr_from_json = JSON.parse(resp);
-            if (id == "#list-form") {
-              $('#list-output').empty();
-              $.each(arr_from_json, function(index, value) {
-                $('#list-output').append("<li>" + value + "</li>");
-              });
-            }
+            $('#list-output').empty();
+            $.each(arr_from_json, function(index, value) {
+              $('#list-output').append("<li>" + value + "</li>");
+            });
           }
         });
+        $("#add-form").find('input:text').val('');
+        $("#list-form").find('input:text').val('');
+      };
+
+      function add_word() {
+        $.ajax({
+          url: '/add',
+          type: 'GET',
+          data: $("#add-form").serialize(),
+          success: function(resp) {
+            console.log(resp);
+          }
+        });
+        list_request();
         $("#add-form").find('input:text').val('');
         $("#list-form").find('input:text').val('');
       };

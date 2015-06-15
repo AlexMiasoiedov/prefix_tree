@@ -7,10 +7,11 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="controller.js"></script>
+    <link type="stylesheet" src="myCSS.css">
     <title>prefix tree</title>
   </head>
   <body>
-  <div id="notifications">Welcome to my page!</div>
+  <div style="display:none" class="notific" id="notific"><b id="new-word"></b> was added!</div>
 
   <form type="" id="add-form" action="/add" method="GET">
       <input type="text" name="word" id="text-area">

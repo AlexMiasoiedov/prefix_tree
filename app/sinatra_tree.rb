@@ -4,7 +4,7 @@ require 'debugger'
 
 require_relative '../lib/prefix_tree'
 
-Capybara.app = Sinatra::Application
+#Capybara.app = Sinatra::Application
 
 tree = Tree.new
 tree.add('word')
