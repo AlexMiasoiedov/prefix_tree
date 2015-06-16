@@ -1,47 +1,69 @@
       $(document).ready(function (){
 
-        list_request();
+        add_list_request("/list", "#list-form")
 
         $("#add-form").on('submit', function(event) {
           event.preventDefault();
           var added_word = document.getElementById("text-area").value;
-          if(added_word == '') {
+          if(added_word != ''){
             $("b#new-word").append(added_word);
             $("div#notific").slideDown();
-            $("div#notific").fadeOut();
-            add_word();
+            $("div#notific").fadeOut(3000);
+            add_list_request("/add", "#add-form")
           }
         });
 
         $("#list-form").on('submit', function(event) {
           event.preventDefault();
-          list_request();
+          add_list_request("/list", "#list-form")
         });
 
         $("#write").on('click', function(event) {
           event.preventDefault();
-          ajax_request('/write_file');
+          write_write_zip_request("/write_file")
         });
 
         $("#write-zip").on('click', function(event) {
           event.preventDefault();
-          ajax_request('/write_zip');
+          write_write_zip_request("/write_zip")
         });
 
         $("#read").on('click', function(event) {
           event.preventDefault();
-          ajax_request('read_file');
-          list_request();
+          read_read_zip_word("/read_file")
         });
 
         $("#read-zip").on('click', function(event) {
           event.preventDefault();
-          ajax_request('read_zip');
-          list_request();
+          read_read_zip_word("/read_zip")
         });
       });
 
-      function ajax_request(url) {
+
+      function add_list_request(url, id) {
+        $.ajax({
+          url: url,
+          type: 'GET',
+          data: $(id).serialize(),
+          success: function(resp){
+            parse_list(resp);
+          }
+        });
+        $("#add-form").find('input:text').val('');
+        $("#list-form").find('input:text').val('');
+      };
+
+      function read_read_zip_word(url) {
+        $.ajax({
+          url: url,
+          type: 'GET',
+          success: function(resp){
+            parse_list(resp);
+          }
+        });
+      };
+
+      function write_write_zip_request(url) {
         $.ajax({
           url: url,
           type: 'GET',
@@ -51,35 +73,12 @@
         });
       };
 
-      function list_request() {
-        $.ajax({
-          url: '/list',
-          type: 'GET',
-          data: $("#list-form").serialize(),
-          success: function(resp){
-            console.log(resp);
-            var arr_from_json = JSON.parse(resp);
+      function parse_list(json) {
+        console.log(json);
+            var arr_from_json = JSON.parse(json);
             $('#list-output').empty();
             $.each(arr_from_json, function(index, value) {
               $('#list-output').append("<li>" + value + "</li>");
             });
-          }
-        });
-        $("#add-form").find('input:text').val('');
-        $("#list-form").find('input:text').val('');
-      };
-
-      function add_word() {
-        $.ajax({
-          url: '/add',
-          type: 'GET',
-          data: $("#add-form").serialize(),
-          success: function(resp) {
-            console.log(resp);
-          }
-        });
-        list_request();
-        $("#add-form").find('input:text').val('');
-        $("#list-form").find('input:text').val('');
       };
       

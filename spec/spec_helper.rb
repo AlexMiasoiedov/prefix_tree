@@ -1,6 +1,22 @@
+ENV["RACK_ENV"] ||= 'test'
 require 'simplecov'
 require 'capybara/rspec'
 require 'capybara/dsl'
+require 'capybara-webkit'
+
+#require 'sinatra'
+#Sinatra::Application.environment = :test
+
+require_relative '../lib/prefix_tree'
+
+Capybara.run_server = true
+Capybara.server_port = 7000
+Capybara.default_wait_time = 5
+Capybara.default_driver = :selenium
+Capybara.javascript_driver = :webkit
+Capybara.app_host = "http://localhost:#{Capybara.server_port}"
+
+#Sinatra::Application.environment = :test
 
 SimpleCov.start
 
@@ -23,6 +39,7 @@ SimpleCov.start
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  config.include Capybara
   config.include Capybara::DSL
 
   # rspec-expectations config goes here. You can use an alternate

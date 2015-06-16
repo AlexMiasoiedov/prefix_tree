@@ -1,9 +1,6 @@
 require 'spec_helper'
 
 require_relative '../app/sinatra_tree.rb'
-Capybara.default_driver = :selenium
-Capybara.javascript_driver = :webkit
-Capybara.default_wait_time = 5
 
 RSpec.describe '#tree front-end', :type => :feature do
 
@@ -11,7 +8,7 @@ RSpec.describe '#tree front-end', :type => :feature do
     visit '/'
   end
 
-  describe '#homepage' do
+  describe '#homepage', :js => true do
     it 'should have content with existing words by default' do
       expect(page).to have_content 'word'
       expect(page).to have_content 'grrrr'
@@ -22,22 +19,30 @@ RSpec.describe '#tree front-end', :type => :feature do
     end
   end
 
-  describe '#add word "new_word"' do
-    it 'should contain content "new_word"', :js => true do
+  describe '#add word', :js => true do
+    it 'used type "new_word" and click on add button' do
       within("form#add-form") do
         fill_in 'text-area', :with => 'new_word'
       end
+      #save_and_open_screenshot('b_add.png')
       click_button 'add'
-      #save_and_open_screenshot
-      #visit '/'
-      #save_and_open_screenshot
+      #save_and_open_screenshot('a_add.png')
       within("div#list-output") do
+        #save_and_open_screenshot
         expect(page).to have_content 'new_word'
+        #save_and_open_screenshot
+        #puts Capybara.current_session.server.host
+        #puts Capybara.current_session.server.port
       end
+    end
+
+    it 'nothing happens when used try to add nothing' do
+      click_button 'add'
+      expect(page).to have_content nil
     end
   end
 
-  describe '#list' do
+  describe '#list', :js => true do
     it 'user click on list button WITHOUT specific prefix' do
       click_button 'list'
       expect(page).to have_content 'word'
@@ -45,37 +50,46 @@ RSpec.describe '#tree front-end', :type => :feature do
       expect(page).to have_content 'beeee'
       expect(page).to have_no_content 'fake content'
     end
+
     it 'user fill specific prefix and click on list button' do
       within("form#list-form") do
         fill_in 'text-ar', :with => 'w'
+        #save_and_open_screenshot
       end
       click_button 'list'
+      #save_and_open_screenshot
       expect(page).to have_content 'word'
+      #save_and_open_screenshot
     end
+
     it 'user fill specific unexisting prefix and click on list button' do
       within("form#list-form") do
         fill_in 'text-ar', :with => 'q'
+        #save_and_open_screenshot
       end
       click_button 'list'
+      #save_and_open_screenshot
       expect(page).to have_content nil
+      #save_and_open_screenshot
     end
   end
 
-  describe '#read' do
+  describe '#read', :js => true do
     it 'user click on read button' do
       click_button 'read'
-      visit '/' #ajax don't send response with out page refresh
-      expect(page).to have_content 'spek_read_file'
+      #save_and_open_screenshot
+      expect(page).to have_content 'default_read_file'
+      #save_and_open_screenshot #!!!!!!!!!! do not make the screenshot
     end
   end
 
-  describe '#read zip' do
+  describe '#read zip', :js => true do
     it 'user click on read_zip button' do
       click_button 'read-zip'
-      visit '/' #ajax don't send response with out page refresh
-      expect(page).to have_content 'spec_read_zip'
+      #save_and_open_screenshot
+      expect(page).to have_content 'default_read_zip'
+      #save_and_open_screenshot #!!!!!!!!!! do not make the screenshot
     end
   end
-
 end
 
