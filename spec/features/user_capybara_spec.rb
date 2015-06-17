@@ -1,9 +1,7 @@
+
 require 'spec_helper'
 
-require_relative '../app/sinatra_tree.rb'
-
 RSpec.describe '#tree front-end', :type => :feature do
-
   before :each do
     visit '/'
   end
@@ -92,4 +90,3 @@ RSpec.describe '#tree front-end', :type => :feature do
     end
   end
 end
-

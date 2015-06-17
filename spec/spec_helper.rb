@@ -1,14 +1,17 @@
 ENV["RACK_ENV"] ||= 'test'
+require_relative '../lib/prefix_tree'
+require_relative '../app/sinatra_tree'
+
+#require File.expand_path '../../../app/sinatra_tree.rb', __FILE__
+#require 'sinatra'
+
+require 'rspec'
 require 'simplecov'
 require 'capybara/rspec'
 require 'capybara/dsl'
 require 'capybara-webkit'
 
-#require 'sinatra'
-#Sinatra::Application.environment = :test
-
-require_relative '../lib/prefix_tree'
-
+Capybara.app = Sinatra::Application
 Capybara.run_server = true
 Capybara.server_port = 7000
 Capybara.default_wait_time = 5
@@ -39,8 +42,10 @@ SimpleCov.start
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-  config.include Capybara
   config.include Capybara::DSL
+  config.before :each, js: true do
+    page.driver.allow_url("ajax.googleapis.com")
+  end
 
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
