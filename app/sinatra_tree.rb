@@ -4,6 +4,13 @@ require 'debugger'
 require_relative '../lib/prefix_tree'
 
 class PrefixTree < Sinatra::Application
+
+  if settings.test?
+    path = 'spec/files/'
+  else
+    path = 'files'
+  end
+
   tree = Tree.new
   tree.add('word')
   tree.add('grrrr')
@@ -26,48 +33,26 @@ class PrefixTree < Sinatra::Application
     JSON.generate(words_hash)
   end
 
-  get "/write_file" do 
-    if settings.test?
-      tree.write_file('spec/files/write')
-    else
-      tree.write_file('files/write')
-    end
+  get "/write_file" do
+    tree.write_file(path + 'write')
   end
 
   get "/write_zip" do
-    if settings.test?
-      tree.write_zip('spec/files/write.zip')
-    else
-      tree.write_zip('files/write.zip')
-    end
+    tree.write_zip(path + 'write.zip')
   end
 
   get "/read_file" do
-    if settings.test?
-      tree.read_file('spec/files/read')
+    tree.read_file(path + 'read')
       words_hash = {}
       tree.list.each { |word| words_hash[word] = word }
       JSON.generate(words_hash)
-    else
-      tree.read_file('files/read')
-      words_hash = {}
-      tree.list.each { |word| words_hash[word] = word }
-      JSON.generate(words_hash)
-    end
   end
 
   get "/read_zip" do
-    if settings.test?
-      tree.read_zip('spec/files/read.zip')
-      words_hash = {}
-      tree.list.each { |word| words_hash[word] = word }
-      JSON.generate(words_hash)
-    else
-      tree.read_zip('files/read.zip')
-      words_hash = {}
-      tree.list.each { |word| words_hash[word] = word }
-      JSON.generate(words_hash)
-    end
+    tree.read_zip(path + 'read.zip')
+    words_hash = {}
+    tree.list.each { |word| words_hash[word] = word }
+    JSON.generate(words_hash)
   end
   run! if app_file == $0
 end
