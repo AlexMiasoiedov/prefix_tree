@@ -1,9 +1,10 @@
-ENV["RACK_ENV"] ||= 'test'
+ENV["RACK_ENV"] = 'test'
 require_relative '../lib/prefix_tree'
 require_relative '../app/sinatra_tree'
 
-#require File.expand_path '../../../app/sinatra_tree.rb', __FILE__
+#require File.expand_path '../../app/sinatra_tree.rb', __FILE__
 #require 'sinatra'
+#require 'rack/test'
 
 require 'rspec'
 require 'simplecov'
@@ -11,15 +12,15 @@ require 'capybara/rspec'
 require 'capybara/dsl'
 require 'capybara-webkit'
 
-Capybara.app = Sinatra::Application
-Capybara.run_server = true
-Capybara.server_port = 7000
-Capybara.default_wait_time = 5
-Capybara.default_driver = :selenium
-Capybara.javascript_driver = :webkit
-Capybara.app_host = "http://localhost:#{Capybara.server_port}"
-
-#Sinatra::Application.environment = :test
+Capybara.configure do |config|
+  config.app = PrefixTree
+  config.server_port = 7000
+  config.run_server = true
+  config.default_wait_time = 10
+  config.default_driver = :selenium
+  config.javascript_driver = :webkit
+  config.app_host = "http://localhost:#{Capybara.server_port}"
+end
 
 SimpleCov.start
 
