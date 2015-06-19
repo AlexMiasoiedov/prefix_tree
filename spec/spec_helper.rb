@@ -16,7 +16,7 @@ Capybara.configure do |config|
   config.app = PrefixTree
   config.server_port = 7000
   config.run_server = true
-  config.default_wait_time = 10
+  config.default_wait_time = 7
   config.default_driver = :selenium
   config.javascript_driver = :webkit
   config.app_host = "http://localhost:#{Capybara.server_port}"
@@ -46,6 +46,7 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   config.before :each, js: true do
     page.driver.allow_url("ajax.googleapis.com")
+    #page.driver.allow_url("code.jquery.com")
   end
 
   # rspec-expectations config goes here. You can use an alternate

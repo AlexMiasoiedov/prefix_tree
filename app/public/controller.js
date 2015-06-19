@@ -1,11 +1,11 @@
       $(document).ready(function (){
 
         add_list_request("/list", "#list-form")
-
         $("#add-form").on('submit', function(event) {
           event.preventDefault();
           var added_word = document.getElementById("text-area").value;
           if(added_word != ''){
+            //$("b#new-word").removeData();
             $("b#new-word").append(added_word);
             $("div#notific").slideDown();
             $("div#notific").fadeOut(3000);
@@ -46,7 +46,7 @@
           type: 'GET',
           data: $(id).serialize(),
           success: function(resp){
-            parse_list(resp);
+            parse_json_resp(resp);
           }
         });
         $("#add-form").find('input:text').val('');
@@ -58,7 +58,7 @@
           url: url,
           type: 'GET',
           success: function(resp){
-            parse_list(resp);
+            parse_json_resp(resp);
           }
         });
       };
@@ -73,7 +73,7 @@
         });
       };
 
-      function parse_list(json) {
+      function parse_json_resp(json) {
         console.log(json);
             var arr_from_json = JSON.parse(json);
             $('#list-output').empty();
@@ -81,4 +81,3 @@
               $('#list-output').append("<li>" + value + "</li>");
             });
       };
-      

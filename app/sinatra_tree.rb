@@ -8,13 +8,13 @@ class PrefixTree < Sinatra::Application
   if settings.test?
     path = 'spec/files/'
   else
-    path = 'files'
+    path = 'files/'
   end
 
   tree = Tree.new
-  tree.add('word')
-  tree.add('grrrr')
-  tree.add('beeee')
+  tree.add('testtree')
+  tree.add('testtabdh')
+  tree.add('someone')
 
   get "/" do
     erb :index
@@ -34,7 +34,7 @@ class PrefixTree < Sinatra::Application
   end
 
   get "/write_file" do
-    tree.write_file(path + 'write')
+    tree.write_file('spec/files/write')
   end
 
   get "/write_zip" do
@@ -43,9 +43,9 @@ class PrefixTree < Sinatra::Application
 
   get "/read_file" do
     tree.read_file(path + 'read')
-      words_hash = {}
-      tree.list.each { |word| words_hash[word] = word }
-      JSON.generate(words_hash)
+    words_hash = {}
+    tree.list.each { |word| words_hash[word] = word }
+    JSON.generate(words_hash)
   end
 
   get "/read_zip" do
