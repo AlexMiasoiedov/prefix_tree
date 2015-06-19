@@ -5,8 +5,7 @@
           event.preventDefault();
           var added_word = document.getElementById("text-area").value;
           if(added_word != ''){
-            //$("b#new-word").removeData();
-            $("b#new-word").append(added_word);
+            $("b#new-word").html(added_word);
             $("div#notific").slideDown();
             $("div#notific").fadeOut(3000);
             add_list_request("/add", "#add-form")
