@@ -34,7 +34,7 @@ class PrefixTree < Sinatra::Application
   end
 
   get "/write_file" do
-    tree.write_file('spec/files/write')
+    tree.write_file(path + 'write')
   end
 
   get "/write_zip" do

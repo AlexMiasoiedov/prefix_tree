@@ -3,7 +3,7 @@
         add_list_request("/list", "#list-form")
         $("#add-form").on('submit', function(event) {
           event.preventDefault();
-          var added_word = document.getElementById("text-area").value;
+          var added_word = document.getElementById("add-text-field").value;
           if(added_word != ''){
             $("b#new-word").html(added_word);
             $("div#notific").slideDown();

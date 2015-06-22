@@ -16,12 +16,11 @@ RSpec.describe '#tree front-end', :type => :feature do
       expect(page).to have_no_content 'fake content'
     end
     it "should be clear in the inpust filds" do
-      within("form#list-form") do
-        
-        expect("input#text-area").to have_content nil
+      within("form#add-form") do
+        expect("input#add-text-field").to have_content nil
       end
       within("form#list-form") do
-        expect("input#text-ar").to have_content nil
+        expect("input#list-text-field").to have_content nil
       end
     end
   end
@@ -29,7 +28,7 @@ RSpec.describe '#tree front-end', :type => :feature do
   describe '#add word', :js => true do
     it 'used type "new_word" and click on add button' do
       within("form#add-form") do
-        fill_in 'text-area', :with => 'new_word'
+        fill_in 'add-text-field', :with => 'new_word'
       end
       click_button 'add'
       within("div#list-output") do
@@ -42,7 +41,7 @@ RSpec.describe '#tree front-end', :type => :feature do
     end
     it 'nothing happens when used click multiple time on add button with out filling added word' do
       within("form#list-form") do
-        expect("input#text-area").to have_content nil
+        expect("input#list-text-field").to have_content nil
       end
       click_button 'add'
       click_button 'add'
@@ -50,11 +49,11 @@ RSpec.describe '#tree front-end', :type => :feature do
       expect(page).to have_content nil
     end
     it "should be clear in the inpust filds" do
-      within("form#list-form") do
-        expect("input#text-area").to have_content nil
+      within("form#add-form") do
+        expect("input#add-text-field").to have_content nil
       end
       within("form#list-form") do
-        expect("input#text-ar").to have_content nil
+        expect("input#list-text-field").to have_content nil
       end
     end
   end
@@ -69,25 +68,24 @@ RSpec.describe '#tree front-end', :type => :feature do
     end
     it 'user fill specific prefix and click on list button' do
       within("form#list-form") do
-        fill_in 'text-ar', :with => 'testt'
+        fill_in 'list-text-field', :with => 'testt'
       end
       click_button 'list'
       expect(page).to have_content 'testtree'
     end
     it 'user fill specific unexisting prefix and click on list button' do
       within("form#list-form") do
-        fill_in 'text-ar', :with => 'q'
+        fill_in 'list-text-field', :with => 'q'
       end
       click_button 'list'
       expect(page).to have_content nil
     end
     it "should be clear in the inpust filds" do
-      within("form#list-form") do
-
-        expect("input#text-area").to have_content nil
+      within("form#add-form") do
+        expect("input#add-text-field").to have_content nil
       end
       within("form#list-form") do
-        expect("input#text-ar").to have_content nil
+        expect("input#list-text-field").to have_content nil
       end
     end
   end
@@ -99,11 +97,10 @@ RSpec.describe '#tree front-end', :type => :feature do
     end
     it "should be clear in the inpust filds" do
       within("form#list-form") do
-        
-        expect("input#text-area").to have_content nil
+        expect("input#add-text-field").to have_content nil
       end
       within("form#list-form") do
-        expect("input#text-ar").to have_content nil
+        expect("input#list-text-field").to have_content nil
       end
     end
   end
@@ -114,12 +111,11 @@ RSpec.describe '#tree front-end', :type => :feature do
       expect(page).to have_content 'spec_read_zip'
     end
     it "should be clear in the inpust filds" do
-      within("form#list-form") do
-        
-        expect("input#text-area").to have_content nil
+      within("form#add-form") do
+        expect("input#add-text-field").to have_content nil
       end
       within("form#list-form") do
-        expect("input#text-ar").to have_content nil
+        expect("input#list-text-field").to have_content nil
       end
     end
   end
@@ -152,12 +148,11 @@ RSpec.describe '#tree front-end', :type => :feature do
       expect(page).to have_no_content 'fake content'
     end
     it "should be clear in the inpust filds" do
-      within("form#list-form") do
-        
-        expect("input#text-area").to have_content nil
+      within("form#add-form") do
+        expect("input#add-text-field").to have_content nil
       end
       within("form#list-form") do
-        expect("input#text-ar").to have_content nil
+        expect("input#list-text-field").to have_content nil
       end
     end
   end
@@ -190,12 +185,11 @@ RSpec.describe '#tree front-end', :type => :feature do
       expect(page).to have_no_content 'fake content'
     end
     it "should be clear in the inpust filds" do
-      within("form#list-form") do
-        
-        expect("input#text-area").to have_content nil
+      within("form#add-form") do
+        expect("input#add-text-field").to have_content nil
       end
       within("form#list-form") do
-        expect("input#text-ar").to have_content nil
+        expect("input#list-text-field").to have_content nil
       end
     end
   end
