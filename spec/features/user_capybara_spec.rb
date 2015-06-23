@@ -10,7 +10,7 @@ RSpec.describe '#tree front-end', :type => :feature do
     click_button 'add'
   end
 
-  describe '#homepage', :js => true do
+  describe '#homepage' do
     it 'should have no content' do
       expect(page).to have_content nil
     end
@@ -27,7 +27,7 @@ RSpec.describe '#tree front-end', :type => :feature do
     end
   end
 
-  describe '#add word', :js => true do
+  describe '#add word' do
     it 'used type "new_word" and click on add button' do
       within("form#add-form") do
         fill_in 'add-text-field', :with => 'new_word'
@@ -58,9 +58,21 @@ RSpec.describe '#tree front-end', :type => :feature do
         expect("input#list-text-field").to have_content nil
       end
     end
+    it "should append page content with word if words prefix similar with chosen prefix and no content with NOT similar" do
+      within("form#list-form") do
+        fill_in 'list-text-field', :with => 'p'
+      end
+      click_button 'list'
+      within("form#add-form") do
+        fill_in 'add-text-field', :with => 'paperoni'
+      end
+      click_button 'add'
+      expect(page).to have_content 'paperoni'
+      expect(page).not_to have_content 'testing'
+    end
   end
 
-  describe '#list', :js => true do
+  describe '#list' do
     it 'user click on list button WITHOUT specific prefix' do
       click_button 'list'
       expect(page).to have_content 'testing'
@@ -89,7 +101,7 @@ RSpec.describe '#tree front-end', :type => :feature do
     end
   end
 
-  describe '#user click on "read" button', :js => true do
+  describe '#user click on "read" button' do
     it 'page should have content from read file' do
       click_button 'read'
       expect(page).to have_content 'spec_read_file'
@@ -104,7 +116,7 @@ RSpec.describe '#tree front-end', :type => :feature do
     end
   end
 
-  describe '#user click on "read zip" button', :js => true do
+  describe '#user click on "read zip" button' do
     it 'page shoul have content from read_zip file' do
       click_button 'read-zip'
       expect(page).to have_content 'spec_read_zip'
@@ -119,7 +131,7 @@ RSpec.describe '#tree front-end', :type => :feature do
     end
   end
 
-  describe '#user click on "write" button', :js => true do
+  describe '#user click on "write" button' do
     it 'write file should contain content from tree' do
       click_button 'write'
       File.open('spec/files/write', 'r') { |file| file.each_line { |word| expect(page).to have_content word.chomp.gsub(/[\\\"]/,"") } }
@@ -144,7 +156,7 @@ RSpec.describe '#tree front-end', :type => :feature do
     end
   end
 
-  describe '#user click on "write zip" button', :js => true do
+  describe '#user click on "write zip" button' do
     it 'write file should contain content from tree' do
       click_button 'write-zip'
       Zip::File.open('spec/files/write.zip') { |zf| zf.read('write').each_line { |word| expect(page).to have_content word.chomp.gsub(/[\\\"]/,"") }}
@@ -167,11 +179,18 @@ RSpec.describe '#tree front-end', :type => :feature do
     end
   end
 
-  describe '#user click on "clear tree" button', :js => true do
+  describe '#user click on "clear tree" button' do
     it 'should delete all content from tree' do
       expect(page).to have_content 'testing'
       click_button 'clear tree'
       expect(page).not_to have_content 'testing' 
+    end
+  end
+
+  describe '#user click on the "clear tree" button' do
+    it 'should clear page content' do
+      click_button 'clear tree'
+      expect(page).not_to have_content 'testing'
     end
   end
 end

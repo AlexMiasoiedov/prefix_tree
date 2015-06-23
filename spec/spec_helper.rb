@@ -2,15 +2,10 @@ ENV["RACK_ENV"] = 'test'
 require_relative '../lib/prefix_tree'
 require_relative '../app/sinatra_tree'
 
-#require File.expand_path '../../app/sinatra_tree.rb', __FILE__
-#require 'sinatra'
-#require 'rack/test'
-
 require 'rspec'
 require 'simplecov'
 require 'capybara/rspec'
 require 'capybara/dsl'
-require 'capybara-webkit'
 
 Capybara.configure do |config|
   config.app = PrefixTree
@@ -18,7 +13,6 @@ Capybara.configure do |config|
   config.run_server = true
   config.default_wait_time = 10
   config.default_driver = :selenium
-  config.javascript_driver = :webkit
   config.app_host = "http://localhost:#{Capybara.server_port}"
 end
 

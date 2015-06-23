@@ -15,7 +15,7 @@
     <title>prefix tree</title>
   </head>
   <body>
-  <div style="display:none" class="notific" id="notific"><b id="new-word"></b> was added!</div>
+  <div style="display:none" class="notific" id="notific"></div>
 
   <form type="" id="add-form" action="/add" method="GET">
       <input type="text" name="word" id="add-text-field">
@@ -25,6 +25,7 @@
     <input type="text" name="pref" id="list-text-field">
     <input id="list" type="submit" value="list" class="btn">
   </form>
+  <div id="prefix" style="display:none"><font color="blue">List of words with prefix <b id="pref"></b>:</font></div>
   <div id="list-output"></div>
   <input id="write" type="button" value="write">
   <input id="write-zip" type="button" value="write zip">

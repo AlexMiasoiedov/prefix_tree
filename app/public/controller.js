@@ -1,14 +1,20 @@
       $(document).ready(function (){
 
-        add_list_request("/list", "#list-form");
+        list_request();
         $("#add-form").on('submit', function(event) {
           event.preventDefault();
           var added_word = document.getElementById("add-text-field").value;
-          if(added_word != ''){
-            message = "<b>" + added_word + "</b> was added!";
-            notifications(message);
-            add_list_request("/add", "#add-form");
-          }
+          var pref = $("b#pref").text();
+          if (added_word != '') {
+            add_request();
+            if(pref != '') {
+              if (added_word.slice(0, pref.length) == pref) $('#list-output').append("<li>" + added_word + "</li>");
+            } else {
+              $('#list-output').append("<li>" + added_word + "</li>");
+            };
+          message = "<b>" + added_word + "</b> was added!";
+          notifications(message);
+          };
         });
 
         $("#list-form").on('submit', function(event) {
@@ -16,11 +22,15 @@
           var prefix = document.getElementById("list-text-field").value;
           if(prefix != ''){
             message = "List of words with prefix <b>" + prefix + "</b>";
+            $("b#pref").html(prefix);
+            $("div#prefix").fadeIn();
           }else{
             message = "Words list";
+            $("b#pref").html('');
+            $("div#prefix").fadeOut();
           };
           notifications(message);
-          add_list_request("/list", "#list-form");
+          list_request();
         });
 
         $("#write").on('click', function(event) {
@@ -58,21 +68,30 @@
             type: 'GET',
             async: false
           });
-          add_list_request("/list", "#list-form");
+          list_request();
+          $("#add-form").find('input:text').val('');
+          $("#list-form").find('input:text').val('');
         });
       });
 
-      function add_list_request(url, id) {
+      function add_request() {
         $.ajax({
-          url: url,
+          url: "/add",
+          type: "GET",
+          data: $("#add-form").serialize()
+        });
+        $("#add-form").find('input:text').val('');
+      };
+
+      function list_request() {
+        $.ajax({
+          url: "/list",
           type: 'GET',
-          data: $(id).serialize(),
+          data: $("#list-form").serialize(),
           success: function(resp){
             parse_json_resp(resp);
           }
         });
-        $("#add-form").find('input:text').val('');
-        $("#list-form").find('input:text').val('');
       };
 
       function read_read_zip_word(url) {

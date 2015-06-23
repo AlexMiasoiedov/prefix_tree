@@ -20,9 +20,6 @@ class PrefixTree < Sinatra::Application
 
   get "/add" do
     session[:tree].add(params[:word])
-    words_array = []
-    session[:tree].list.each { |word| words_array << word }
-    JSON.generate(words_array)
   end
 
   get "/list" do
