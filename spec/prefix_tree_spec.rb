@@ -22,16 +22,16 @@ RSpec.describe '#prefix_tree' do
   end
 
   describe '#include?' do
-    it 'the tree include the words that user added?' do
+    it 'the tree include the words that was added?' do
       expect(@tree.include?('testtree')).to eq(true)
       expect(@tree.include?('testtre')).to eq(false)
     end
-    it 'check that tree include the words that was added from read file?' do
+    it 'check that tree include the words that was readed from file?' do
       @tree.read_file('spec/files/read')
       expect(@tree.include?('spec_read_file')).to eq(true)
       expect(@tree.include?('testing_readd_zip')).to eq(false)
     end
-    it '"include?" return false if he take NO paramether?' do
+    it 'return false if he take NO paramether?' do
       expect(@tree.include?).to eq(false)
     end
   end
@@ -41,7 +41,7 @@ RSpec.describe '#prefix_tree' do
       expect(@tree.list('testt1')).to eq([])
       expect(@tree.list('testt').sort).to eq(['testtabdh', 'testtree'].sort)
     end
-    it 'return all the words' do
+    it 'return all words' do
       expect(@tree.list.sort).to eq( ["testtree", "testtabdh", "someone"].sort)
     end
     it 'return empty array when specific prefix is unexisting' do
@@ -72,7 +72,7 @@ RSpec.describe '#prefix_tree' do
   end
 
   describe '#read file' do
-    it 'readed words from file' do
+    it 'read words from file' do
       @tree.read_file('spec/files/read')
       expect(@tree.include?('spec_read_file')).to eq(true)
       expect(@tree.include?('testing_readd_file')).to eq(false)
@@ -80,7 +80,7 @@ RSpec.describe '#prefix_tree' do
   end
 
   describe '#read.zip file' do
-    it 'readed words from zip file' do
+    it 'read words from zip file' do
       @tree.read_zip('spec/files/read.zip')
       expect(@tree.include?('spec_read_zip')).to eq(true)
       expect(@tree.include?('testing_readd_zip')).to eq(false)
