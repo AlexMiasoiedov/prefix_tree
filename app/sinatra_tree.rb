@@ -12,11 +12,7 @@ class PrefixTree < Sinatra::Application
   else
     path = 'files/'
   end
-=begin
-  get "/new_tree" do
-    session['tree'] = Tree.new
-  end
-=end
+  
   get "/" do
     session['tree'] = Tree.new
     erb :index
