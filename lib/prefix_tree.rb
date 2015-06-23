@@ -2,8 +2,6 @@ require_relative 'tree/node'
 
 require 'zip'
 
-require "debugger"
-
 class Tree
   WORD_MIN_LENGTH = 3
 
@@ -12,7 +10,6 @@ class Tree
   end
 
   def add(str = '')
-    #debugger 
     return if str == ''
     str.chomp!
     current = @root
@@ -33,7 +30,6 @@ class Tree
       return false if current_node.children[ch].nil?
       current_node = current_node.children[ch]
     end
-    #debugger
     return current_node.is_word
   end
 
@@ -87,7 +83,6 @@ class Tree
       return false if current_node.children[ch].nil?
       current_node = current_node.children[ch]
     end
-    #debugger
     return current_node
   end
 end

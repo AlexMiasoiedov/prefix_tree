@@ -4,13 +4,15 @@ require 'zip'
 RSpec.describe '#tree front-end', :type => :feature do
   before :each do
     visit '/'
+    within("form#add-form") do
+      fill_in 'add-text-field', :with => 'testing'
+    end
+    click_button 'add'
   end
 
   describe '#homepage', :js => true do
-    it 'should have content with existing words by default' do
-      expect(page).to have_content 'testtree'
-      expect(page).to have_content 'testtabdh'
-      expect(page).to have_content 'someone'
+    it 'should have no content' do
+      expect(page).to have_content nil
     end
     it 'should NOT have unexicting content' do
       expect(page).to have_no_content 'fake content'
@@ -61,17 +63,14 @@ RSpec.describe '#tree front-end', :type => :feature do
   describe '#list', :js => true do
     it 'user click on list button WITHOUT specific prefix' do
       click_button 'list'
-      expect(page).to have_content 'testtree'
-      expect(page).to have_content 'testtabdh'
-      expect(page).to have_content 'someone'
-      expect(page).to have_no_content 'fake content'
+      expect(page).to have_content 'testing'
     end
     it 'user fill specific prefix and click on list button' do
       within("form#list-form") do
-        fill_in 'list-text-field', :with => 'testt'
+        fill_in 'list-text-field', :with => 't'
       end
       click_button 'list'
-      expect(page).to have_content 'testtree'
+      expect(page).to have_content 'testing'
     end
     it 'user fill specific unexisting prefix and click on list button' do
       within("form#list-form") do
@@ -127,25 +126,13 @@ RSpec.describe '#tree front-end', :type => :feature do
     end
     it 'should nothing happens with page content when user click on "write" button' do
       click_button 'write'
-      expect(page).to have_content 'testtree'
-      expect(page).to have_content 'testtabdh'
-      expect(page).to have_content 'someone'
-      expect(page).to have_content 'new_word'
-      expect(page).to have_content 'spec_read_file'
-      expect(page).to have_content 'spec_read_zip'
-      expect(page).to have_no_content 'fake content'
+      expect(page).to have_content 'testing'
     end
     it 'should nothing happens with page content when user click on "write" button multiple times' do
       click_button 'write'
       click_button 'write'
       click_button 'write'
-      expect(page).to have_content 'testtree'
-      expect(page).to have_content 'testtabdh'
-      expect(page).to have_content 'someone'
-      expect(page).to have_content 'new_word'
-      expect(page).to have_content 'spec_read_file'
-      expect(page).to have_content 'spec_read_zip'
-      expect(page).to have_no_content 'fake content'
+      expect(page).to have_content 'testing'
     end
     it "should be clear in the inpust filds" do
       within("form#add-form") do
@@ -164,33 +151,27 @@ RSpec.describe '#tree front-end', :type => :feature do
     end
     it 'should nothing happens with page content when user click on "write zip" button' do
       click_button 'write-zip'
-      expect(page).to have_content 'testtree'
-      expect(page).to have_content 'testtabdh'
-      expect(page).to have_content 'someone'
-      expect(page).to have_content 'new_word'
-      expect(page).to have_content 'spec_read_file'
-      expect(page).to have_content 'spec_read_zip'
-      expect(page).to have_no_content 'fake content'
+      expect(page).to have_content 'testing'
     end
     it 'should nothing happens with page content when user click on "write zip" button multiple times' do
+      click_button 'add'
       click_button 'write-zip'
       click_button 'write-zip'
       click_button 'write-zip'
-      expect(page).to have_content 'testtree'
-      expect(page).to have_content 'testtabdh'
-      expect(page).to have_content 'someone'
-      expect(page).to have_content 'new_word'
-      expect(page).to have_content 'spec_read_file'
-      expect(page).to have_content 'spec_read_zip'
-      expect(page).to have_no_content 'fake content'
+      expect(page).to have_content 'testing'
     end
     it "should be clear in the inpust filds" do
-      within("form#add-form") do
-        expect("input#add-text-field").to have_content nil
-      end
       within("form#list-form") do
         expect("input#list-text-field").to have_content nil
       end
+    end
+  end
+
+  describe '#user click on "clear tree" button', :js => true do
+    it 'should delete all content from tree' do
+      expect(page).to have_content 'testing'
+      click_button 'clear tree'
+      expect(page).not_to have_content 'testing' 
     end
   end
 end
