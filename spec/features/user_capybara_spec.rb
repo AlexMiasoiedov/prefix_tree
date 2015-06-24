@@ -70,6 +70,13 @@ RSpec.describe '#tree front-end', :type => :feature do
       expect(page).to have_content 'paperoni'
       expect(page).not_to have_content 'testing'
     end
+    it "can NOT add already existing word" do
+      within("form#add-form") do
+        fill_in 'add-text-field', :with => 'testing'
+      end
+      click_button 'add'
+      expect(page).not_to have_content 'testing testing'
+    end
   end
 
   describe '#list' do
