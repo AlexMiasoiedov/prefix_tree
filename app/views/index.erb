@@ -11,25 +11,26 @@
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     -->
     <script src="controller.js"></script>
-    <link type="stylesheet" src="myCSS.css">
+    <link rel="stylesheet" type="text/css" href="myCSS.css">
     <title>prefix tree</title>
   </head>
   <body>
   <div style="display:none" class="notific" id="notific"></div>
-
-  <form type="" id="add-form" action="/add" method="GET">
-      <input type="text" name="word" id="add-text-field">
-      <input id="add" type="submit" value="add" class="btn">
-  </form>
-  <form id="list-form" action="/list" method="GET">
-    <input type="text" name="pref" id="list-text-field">
-    <input id="list" type="submit" value="list" class="btn">
-  </form>
-  <div id="prefix" style="display:none"><font color="blue">List of words with prefix <b id="pref"></b>:</font></div>
-  <div id="list-output"></div>
-  <input id="write" type="button" value="write">
-  <input id="write-zip" type="button" value="write zip">
-  <input id="read" type="button" value="read">
-  <input id="read-zip" type="button" value="read zip">
-  <input id="clear-tree" type="button" value="clear tree">
+  <div class="controllers">
+    <form type="" id="add-form" action="/add" method="GET">
+        <input type="text" name="word" id="add-text-field">
+        <input id="add" type="submit" value="add" class="btn">
+    </form>
+    <form id="list-form" action="/list" method="GET">
+      <input type="text" name="pref" id="list-text-field">
+      <input id="list" type="submit" value="list" class="btn">
+    </form>
+    <div id="prefix" style="display:none"><font color="blue">List of words with prefix <b id="pref"></b>:</font></div>
+    <div id="list-output"></div>
+    <input id="write" type="button" value="write">
+    <input id="write-zip" type="button" value="write zip">
+    <input id="read" type="button" value="read">
+    <input id="read-zip" type="button" value="read zip">
+    <input id="clear-tree" type="button" value="clear tree">
+  </div>
 </body>

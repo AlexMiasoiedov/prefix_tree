@@ -1,4 +1,8 @@
 .notific {
-  position: absolute,
-  left: 20px
+  position: absolute;
+  left: 20px;
+}
+.controllers {
+	position: absolute;
+	top: 32px;
 }
