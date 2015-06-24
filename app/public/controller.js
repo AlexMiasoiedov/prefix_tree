@@ -5,7 +5,6 @@
           event.preventDefault();
           var added_word = document.getElementById("add-text-field").value;
           var pref = $("b#pref").text();
-          //word_exist(added_word)
           if (added_word != '' && word_exist(added_word)) {
             add_request();
             if(pref != '') {
@@ -76,65 +75,38 @@
       });
 
       function add_request() {
-        $.ajax({
-          url: "/add",
-          type: "GET",
-          data: $("form#add-form").serialize()
-        });
+        $.get('/add', $("form#add-form").serialize());
         $("form#add-form").find('input:text').val('');
       };
 
       function list_request() {
-        $.ajax({
-          url: "/list",
-          type: 'GET',
-          data: $("#list-form").serialize(),
-          success: function(resp){
-            parse_json_resp(resp);
-          }
-        });
+        $.get('/list', $("#list-form").serialize(), function(data) { parse_json_resp(data); });
       };
 
       function read_read_zip_word(url) {
-        $.ajax({
-          url: url,
-          type: 'GET',
-          success: function(resp){
-            parse_json_resp(resp);
-          }
-        });
+        $.get(url, function(data){ parse_json_resp(data); });
       };
 
       function write_write_zip_request(url) {
-        $.ajax({
-          url: url,
-          type: 'GET',
-          success: function(resp){
-            console.log(resp);
-          }
-        });
+        $.get(url);
       };
 
       function parse_json_resp(json) {
         console.log(json);
-            var arr_from_json = JSON.parse(json);
             $('div#list-output').empty();
-            $.each(arr_from_json, function(index, value) {
+            $.each(JSON.parse(json), function(index, value) {
               $('div#list-output').append("<li>" + value + "</li>");
             });
       };
 
       function notifications(content){
-        $("div#notific").html(content);
-        $("div#notific").slideDown();
-        $("div#notific").fadeOut(1700);
+        $("div#notific").html(content).slideDown().fadeOut(1700);
       };
 
       function word_exist(added_word) {
-        var div_child = div_child = $("div#list-output").children();
+        var div_child = $("div#list-output").children();
         for (i = 0; i < div_child.length; i++){
           if (added_word == $(div_child[i]).text()) return false;
         };
         return true;
       };
-      
