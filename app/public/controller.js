@@ -63,13 +63,16 @@
           list_request();
           $("form#add-form").find('input:text').val('');
           $("form#list-form").find('input:text').val('');
+          $("b#pref").html('');
+          $("div#prefix").fadeOut();
         });
       });
 
       function add_request(word) {
         $.get('/add', $("form#add-form").serialize(), function(request, status) {
           if (status == "success") {
-            if($("b#pref").text() != '') {
+            var pref = $("b#pref").text();
+            if(pref != '') {
               if (word.slice(0, pref.length) == pref) $('div#list-output').append("<li>" + word + "</li>");
             } else {
               $('div#list-output').append("<li>" + word + "</li>");
@@ -77,8 +80,8 @@
             message = "<b>" + word + "</b> was added!";
             notifications(message);
           };
+          $("form#add-form").find('input:text').val('');
         });
-        $("form#add-form").find('input:text').val('');
       };
 
       function list_request() {

@@ -13,6 +13,10 @@ class PrefixTree < Sinatra::Application
     path = 'files/'
   end
 
+  before "/" do
+    session[:tree] = Tree.new
+  end
+
   get "/tree" do
     session[:tree] = Tree.new
   end
