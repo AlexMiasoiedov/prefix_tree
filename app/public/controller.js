@@ -4,16 +4,8 @@
         $("form#add-form").on('submit', function(event) {
           event.preventDefault();
           var added_word = document.getElementById("add-text-field").value;
-          var pref = $("b#pref").text();
           if (added_word != '' && word_exist(added_word)) {
-            add_request();
-            if(pref != '') {
-              if (added_word.slice(0, pref.length) == pref) $('div#list-output').append("<li>" + added_word + "</li>");
-            } else {
-              $('div#list-output').append("<li>" + added_word + "</li>");
-            };
-          message = "<b>" + added_word + "</b> was added!";
-          notifications(message);
+            add_request(added_word);
           };
         });
 
@@ -64,7 +56,7 @@
         $("input#clear-tree").on('click', function(event) {
           event.preventDefault();
           $.ajax({
-            url: '/',
+            url: "/tree",
             type: 'GET',
             async: false
           });
@@ -74,8 +66,18 @@
         });
       });
 
-      function add_request() {
-        $.get('/add', $("form#add-form").serialize());
+      function add_request(word) {
+        $.get('/add', $("form#add-form").serialize(), function(request, status) {
+          if (status == "success") {
+            if($("b#pref").text() != '') {
+              if (word.slice(0, pref.length) == pref) $('div#list-output').append("<li>" + word + "</li>");
+            } else {
+              $('div#list-output').append("<li>" + word + "</li>");
+            };
+            message = "<b>" + word + "</b> was added!";
+            notifications(message);
+          };
+        });
         $("form#add-form").find('input:text').val('');
       };
 

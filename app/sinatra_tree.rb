@@ -12,14 +12,18 @@ class PrefixTree < Sinatra::Application
   else
     path = 'files/'
   end
+
+  get "/tree" do
+    session[:tree] = Tree.new
+  end
   
   get "/" do
-    session['tree'] = Tree.new
+    #session[:tree] = Tree.new
     erb :index
   end
 
   get "/add" do
-    session[:tree].add(params[:word])
+    session[:tree].add(params[:word]) 
   end
 
   get "/list" do
