@@ -57,7 +57,7 @@
           event.preventDefault();
           $.ajax({
             url: "/tree",
-            type: 'GET',
+            type: 'POST',
             async: false
           });
           list_request();
@@ -69,7 +69,7 @@
       });
 
       function add_request(word) {
-        $.get('/add', $("form#add-form").serialize(), function(request, status) {
+        $.post('/add', $("form#add-form").serialize(), function(request, status) {
           if (status == "success") {
             var pref = $("b#pref").text();
             if(pref != '') {
@@ -89,11 +89,11 @@
       };
 
       function read_read_zip_word(url) {
-        $.get(url, function(data){ parse_json_resp(data); });
+        $.post(url, function(data){ parse_json_resp(data); });
       };
 
       function write_write_zip_request(url) {
-        $.get(url);
+        $.post(url);
       };
 
       function parse_json_resp(json) {

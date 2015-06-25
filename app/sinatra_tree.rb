@@ -13,7 +13,7 @@ class PrefixTree < Sinatra::Application
     path = 'files/'
   end
 
-  get "/tree" do
+  post "/tree" do
     session[:tree] = nil
     redirect '/'
   end
@@ -25,7 +25,7 @@ class PrefixTree < Sinatra::Application
     erb :index
   end
 
-  get "/add" do
+  post "/add" do
     session[:tree].add(params[:word]) 
   end
 
@@ -35,22 +35,22 @@ class PrefixTree < Sinatra::Application
     JSON.generate(words_array)
   end
 
-  get "/write_file" do
+  post "/write_file" do
     session[:tree].write_file(path + 'write')
   end
 
-  get "/write_zip" do
+  post "/write_zip" do
     session[:tree].write_zip(path + 'write.zip')
   end
 
-  get "/read_file" do
+  post "/read_file" do
     session[:tree].read_file(path + 'read')
     words_array = []
     session[:tree].list.each { |word| words_array << word }
     JSON.generate(words_array)
   end
 
-  get "/read_zip" do
+  post "/read_zip" do
     session[:tree].read_zip(path + 'read.zip')
     words_array = []
     session[:tree].list.each { |word| words_array << word }
