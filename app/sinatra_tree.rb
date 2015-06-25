@@ -13,7 +13,7 @@ class PrefixTree < Sinatra::Application
     path = 'files/'
   end
 
-  post "/tree" do
+  post "/clear" do
     session[:tree] = nil
     redirect '/'
   end

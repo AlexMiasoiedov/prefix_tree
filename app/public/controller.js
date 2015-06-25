@@ -56,7 +56,7 @@
         $("input#clear-tree").on('click', function(event) {
           event.preventDefault();
           $.ajax({
-            url: "/tree",
+            url: "/clear",
             type: 'POST',
             async: false
           });
